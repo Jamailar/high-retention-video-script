@@ -1,0 +1,6 @@
+interface:
+  display_name: "高完播视频脚本"
+  short_description: "按观众任务选择结构，再用 HKRR 与时钟完成可拍可剪脚本"
+  default_prompt: "Use $high-retention-video-script to classify the viewer job and presentation architecture before drafting. For utility introductions and tutorials, show the finished result first and proceed directly through definition, real input, operation, output, limitation, and action without forcing backstory or dramatic reversals. Organize the user's raw material and voice, write and read-test a natural spoken draft, then use HKRR and the 12-point stimulus clock to design and audit retention. Deliver one concise self-contained HTML with the word-for-word A-roll/B-roll timeline, circular clock, capture checklist, compact evidence-based QC, and local shooting-PNG export."
+policy:
+  allow_implicit_invocation: true
