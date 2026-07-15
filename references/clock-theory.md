@@ -2,7 +2,7 @@
 
 ## Source Pattern
 
-This reference distills the short-video method extracted from a Douyin video by `飓风世界` about HKRR and clock theory.
+This reference distills the HKRR and 12-point clock theories publicly explained by 影视飓风, based on short-video material published on Douyin by the account `飓风世界`. The rules below are an independent working adaptation for AI-assisted script design and production planning, not an official 影视飓风 publication.
 
 HKRR:
 

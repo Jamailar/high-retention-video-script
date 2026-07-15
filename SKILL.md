@@ -1,6 +1,6 @@
 ---
 name: high-retention-video-script
-description: Create, revise, or audit high-retention product videos, app tutorials, launch explainers, creator education videos, social ads, case stories, reviews, and walkthroughs. Starts from the creator's real material, point of view, speaking samples, audience tension, and available proof; develops one strong content proposition and package; writes a natural spoken draft; then uses HKRR and a 12-point stimulus clock to strengthen retention without flattening the creator's voice. Delivers one concise, production-ready HTML package with a readable word-for-word script, A-roll/B-roll timeline, capture checklist, circular clock, and evidence-based QC.
+description: Create, revise, or audit high-retention product videos, app tutorials, launch explainers, creator education videos, social ads, case stories, reviews, and walkthroughs. Grounded in the HKRR and clock theories publicly explained by 影视飓风, it starts from the creator's real material, point of view, speaking samples, audience tension, and available proof; develops one strong content proposition and package; writes a natural spoken draft; then uses HKRR and a 12-point stimulus clock to strengthen retention without flattening the creator's voice. Delivers one concise, production-ready HTML package with a readable word-for-word script, A-roll/B-roll timeline, capture checklist, circular clock, and evidence-based QC.
 ---
 
 # High Retention Video Script
@@ -14,6 +14,10 @@ The order matters:
 `raw material -> viewer job and format -> one core result or point -> title and hook -> human rough draft -> HKRR and clock -> timed AV script -> capture -> edit -> QC`
 
 HKRR and the stimulus clock are design and diagnosis tools. They must strengthen a real piece of content; they must never generate twelve equal blocks of explanatory copy or turn the video into a feature tour.
+
+## Theory Attribution
+
+The conceptual foundation of this Skill is the HKRR theory and the 12-point clock theory publicly explained in 影视飓风 content, including the Douyin material published by the account `飓风世界`. This repository is an independent implementation for AI-assisted script design and production planning; it is not an official 影视飓风 project and does not imply endorsement.
 
 The default handoff is one self-contained HTML file. It can generate a simplified shooting PNG locally. Create an optional capture CSV only when another operator explicitly needs sortable data.
 
