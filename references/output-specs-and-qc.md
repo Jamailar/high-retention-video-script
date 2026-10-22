@@ -15,126 +15,94 @@ Do not output separate strategy, source, title, beat, clock, AV, capture, edit, 
 
 The creator should be able to answer these questions in order:
 
-1. What video am I making?
-2. What exactly do I say, show, and cut at each time?
-3. How are HKRR and the stimulus clock shaping the viewing experience?
-4. Which assets do I need to capture?
-5. What must be fixed before shooting?
+1. What video am I making, and what must I fix before shooting?
+2. What exactly do I say, and what does the viewer see, at each time?
+3. What do I shoot at each camera position, and when is a shot good enough?
+4. How are HKRR and the stimulus clock shaping the viewing experience?
 
 If the HTML answers a strategy question but makes any action harder to find, simplify it.
 
 ## HTML Contract
 
-Use `assets/video-script-package-template.html`. Keep all CSS, JavaScript, icons, and fonts local or system-provided. The document must remain readable without JavaScript; interactions only enhance progress and export.
+Use `assets/video-script-package-template.html`. It is data-driven: copy the file and replace **only** the JSON inside `<script type="application/json" id="video-script-data">`. Everything the creator sees (header, opening 3 seconds, script, capture cards, HKRR, clock, A/B track, QC, teleprompter, field-sheet PNG) is rendered from that one object, so the same fact is never written twice and cannot drift.
 
-### 1. Summary
+Remove `"example": true` from the copied JSON. Never write the two characters `</` inside the JSON; write `<\/` instead. Keep all CSS, JavaScript, fonts, and the embedded Beav icon local.
 
-Show:
+The page follows the creator's real sequence, one view at a time:
 
-- selected title
-- one-sentence premise or completion promise
-- runtime and platform
-- context status and voice status
-- HKRR total
-- capture and edit progress
-- one compact decision strip: core result or point, video job, viewer tension, proof engine
+1. **逐字稿 (read and edit)**: the opening-3-seconds card, then every beat with its spoken line first and picture/text/edit cue under it. A teleprompter reads the same lines full-screen.
+2. **拍摄 (shoot)**: capture cards grouped as "A-roll by camera position" and "B-roll / screen / assets". An A-roll card lists every line recorded at that position, so the creator can shoot all of them in one sitting. Each B-roll card shows where it is used.
+3. **节奏 (rhythm)**: the core decision, four HKRR cards, the 12-point clock, the proportional A/B track, the pre-shoot QC, and a collapsed sources appendix.
 
-Do not show title ideation worksheets or long strategy prose.
+### Data Object
 
-### 2. Word-For-Word AV Script
-
-This is the primary and only expanded script/edit table. Use no more than five visible columns:
-
-| Column | Required content |
-| --- | --- |
-| `done` | Persistent local edit checkbox |
-| `time_and_clock` | Exact in/out, clock mark, stimulus size, dominant HKRR role |
-| `spoken_line` | Complete, speakable line, dialogue, silence, or sync-audio instruction |
-| `picture` | A-roll and B-roll shot IDs plus the exact visible action or state |
-| `edit_cue` | Concise cut, hold, sound, text, crop, speed, or transition instruction |
+```json
+{
+  "id": "stable-package-id",
+  "title": "selected title",
+  "promise": "one-sentence premise or completion promise",
+  "runtimeSeconds": 72,
+  "platform": "抖音 · 竖屏 9:16",
+  "voice": { "status": "verified | provisional", "label": "已按你的口吻 / 待你读一遍", "note": "fingerprints used, or what is still unverified" },
+  "core": { "point": "one core result or point", "tension": "viewer tension", "proof": "proof engine" },
+  "fixFirst": "the one revision to make before shooting (omit when none)",
+  "script": [
+    { "id": "S01", "start": 0, "end": 4, "clock": "12", "hkrr": "K+H",
+      "line": "complete speakable line", "delivery": "optional short delivery note",
+      "a": "A01", "b": ["B01"], "picture": "what the viewer sees",
+      "text": "short on-screen text", "cue": "cut / hold / sound instruction" }
+  ],
+  "shots": [
+    { "id": "A01", "type": "A | B | screen | audio | asset", "priority": "must | should | optional",
+      "what": "what must visibly or audibly happen", "where": "location",
+      "start": "start state", "action": "action", "end": "end state",
+      "framing": "framing / height / distance / light", "takes": "takes or duration",
+      "file": "deterministic filename", "accept": "observable acceptance criterion", "privacy": "rights or privacy note" }
+  ],
+  "hkrr": {
+    "H": { "score": 4, "effect": "intended viewer effect", "evidence": "timestamped execution" },
+    "K": { "score": 5, "effect": "", "evidence": "" },
+    "R": { "score": 3, "effect": "", "evidence": "" },
+    "Rh": { "score": 4, "effect": "12-point distribution plus micro pacing", "evidence": "" }
+  },
+  "clock": [ { "mark": "12", "time": "0:00", "role": "K+H", "label": "compact stimulus or payoff" } ],
+  "finish": { "time": "1:12", "label": "how the promise is repaid and the action lands" },
+  "qc": {
+    "dropOff": { "time": "0:15", "risk": "first exact drop-off risk and whether it was repaired" },
+    "aiPattern": "strongest remaining generic or AI-pattern risk, or 无",
+    "blockers": "proof or production blockers",
+    "verdict": "one-line HKRR verdict"
+  },
+  "sources": { "used": "", "missing": "", "assumptions": "", "doNotClaim": "" }
+}
+```
 
 Rules:
 
-- Put the complete spoken text in the table. Never replace it with a summary.
-- Keep each row to one performance or editorial beat; do not force one row per clock point.
-- Clock points may span one or several rows.
-- A-roll/B-roll IDs must resolve to the capture checklist.
-- On-screen text must be short and should not duplicate full subtitles.
-- The row must be understandable without consulting a separate viewer-journey or edit table.
-
-### 3. HKRR And Rhythm
-
-Show four compact HKRR cards. Each card contains only:
-
-- intended viewer effect
-- exact execution or timestamp evidence
-- score from 0-5
-
-For Rhythm, name both the 12-point distribution and the important micro-pacing behavior.
-
-Show one mandatory circular 12-point clock:
-
-- `12/3/6/9` use stronger coral markers
-- the other eight points use smaller neutral markers
-- Finish stays in the center
-- every point displays mark, exact trigger time or time range, HKRR role, and a compact stimulus/payoff phrase around the circumference
-- do not add a duplicate clock-point list or table below it
-- a point may be a spoken idea, visual proof, reaction, silence, sound change, or transition
-
-Show one proportional A-roll/B-roll timeline directly before or after the clock. It is a visual overview, not a second edit table.
-
-### 4. Capture Checklist
-
-Use no more than five visible columns:
-
-| Column | Required content |
-| --- | --- |
-| `done` | Persistent local capture checkbox |
-| `id_type_priority` | Stable ID, A-roll/B-roll/audio/existing asset, must/should/optional |
-| `capture` | What must visibly or audibly happen |
-| `direction` | Start state -> action -> end state, framing/region, target duration/takes |
-| `output` | Deterministic filename, privacy/rights note, observable acceptance criterion |
-
-Do not split each attribute into its own column. Keep the instructions concrete enough that another person can capture the asset without interpreting the script.
-
-### 5. Final QC
-
-Keep the visible audit compact. Show:
-
-- voice status and creator fingerprints used
-- first exact drop-off risk and whether it was repaired
-- strongest remaining generic or AI-pattern risk, or `none`
-- H/K/R/Rhythm scores with one evidence phrase each
-- proof or production blockers
-- one highest-priority revision before shooting
-
-Do not show a 35-row checklist. Internal checks still apply, but only the decision-changing result belongs in the HTML.
+- `script` is the single source of truth for words and edit order. Put the complete spoken text in `line`; never summarize it. One row is one performance or editorial beat; rows are continuous (`start` equals the previous `end`) and the last `end` equals `runtimeSeconds`.
+- Give `clock` on the row where that clock point fires. A point may be a look, pause, proof reveal, sound change, or cut; it does not need a new sentence.
+- `a` is the A-roll shot recording the voice for that row; `b` lists the shots covering it. Every ID must exist exactly once in `shots`. A must-have shot that no row uses must be `audio` or `asset`.
+- `clock` has exactly 12 items in order 12, 1, … 11. `12/3/6/9` are drawn as big stimuli. `finish` sits in the center.
+- `text` is short on-screen text (two lines of about 8–10 Chinese characters at most), never a full subtitle.
+- Omit empty fields rather than writing `—`.
+- The page validates itself: placeholders left behind, missing shot IDs, discontinuous times, runtime mismatch, unused must-shots, duplicate IDs, and a clock without 12 points appear in a red "数据检查" note and in `window.videoScriptCheck`. Open the file (or run it headless) and deliver only when that list is empty.
 
 ## Interactions
 
-Keep only interactions that reduce production effort:
+Keep only interactions that reduce production effort; the template already has them:
 
-- persistent local completion state
-- capture and edit progress
-- unfinished-only filtering
-- print / PDF
-- reset progress with confirmation
-- generate a simplified shooting PNG locally with Canvas
-- preview and save the PNG; keep the preview long-pressable on mobile
+- three-view switch (逐字稿 / 拍摄 / 节奏), remembered per package
+- teleprompter: full-screen lines, auto-scroll with speed control, mirror mode, tap or space to pause
+- persistent capture and edit checks, capture progress with remaining must-shots, "只看没拍的", reset with confirmation
+- tapping a shot ID in the script jumps to its capture card
+- field-sheet PNG generated locally with Canvas; long-press to save on mobile
+- print / PDF prints all three views in order
 
-Do not add tabs, carousels, focus modes, synchronized selectors, score filters, decorative animation, or editing controls.
+Do not add more tabs, carousels, editing controls, score filters, or decorative animation. Light and dark follow the system.
 
 ## Shooting PNG
 
-The PNG is a field sheet, not a screenshot. Generate it from approved HTML data and include:
-
-- selected title, premise, runtime, platform, and capture progress
-- compact H/K/R/Rhythm execution guidance
-- circular clock with all point labels around the circumference
-- every capture row and completion state
-- embedded Beav icon and name
-
-No network requests or external rendering libraries.
+The field sheet is generated from the same data, not a screenshot. It contains the title, platform, runtime, capture progress, HKRR total, the opening-3-seconds line, the 12 clock points, and every capture card with its done state, start → action → end, framing, takes, and filename.
 
 ## Internal Decision Records
 
