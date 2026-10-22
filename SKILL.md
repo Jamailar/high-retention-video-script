@@ -17,7 +17,7 @@ HKRR and the stimulus clock are design and diagnosis tools. They must strengthen
 
 ## Theory Attribution
 
-The conceptual foundation of this Skill is the HKRR theory and the 12-point clock theory publicly explained in 影视飓风 content, including the Douyin material published by the account `飓风世界`. This repository is an independent implementation for AI-assisted script design and production planning; it is not an official 影视飓风 project and does not imply endorsement.
+The conceptual foundation of this Skill is the HKRR theory and the 12-point clock theory publicly explained in 影视飓风 content, including the Douyin material published by the account `飓风世界`. Craft patterns observed in 影视飓风's published videos (hook families, the point unit, self-answered questions, long video as a chain of short videos, elevation, pre-screening) are summarized in `references/mediastorm-observed-patterns.md`, informed by the MIT-licensed community transcript analyses `imfangli/mediastorm-copywriter` and `phaseddd/PhasedddSkill` (`tim-mediastorm`) and rewritten in our own words. This repository is an independent implementation for AI-assisted script design and production planning; it is not an official 影视飓风 project and does not imply endorsement.
 
 The default handoff is one self-contained HTML file rendered from a single JSON data block. It can show a teleprompter and generate a simplified shooting PNG locally. Create an optional capture CSV only when another operator explicitly needs sortable data.
 
@@ -45,6 +45,7 @@ For a full concept, script, rewrite, or production package, read these before dr
 - `references/story-script-and-spoken-copy.md`: one-point story design and natural spoken drafting.
 - `references/human-voice-and-editorial-audit.md`: creator interview, AI-pattern diagnosis, drop-off audit, and human rewrite gates.
 - `references/clock-theory.md`: HKRR design and the mandatory 12-point stimulus clock.
+- `references/mediastorm-observed-patterns.md`: hook families, stake-raising opening, point unit, pacing engines, long-video chaining, elevation, and pre-screening.
 - `references/timing-pacing-and-retention.md`: read-through timing, energy, micro pacing, and platform fit.
 - `references/creator-production-system.md`: capture planning, audio-first assembly, and production feasibility.
 - `references/output-specs-and-qc.md`: HTML data contract, validation, and scores.
@@ -121,6 +122,8 @@ Create title, cover or first frame, hook, and payoff from the selected content. 
 
 Explore title families internally, then keep three genuinely different finalists for selection or testing. The selected title must be speakable, specific, credible, and fully payable by the footage. The first frame adds information rather than repeating the title. The opening confirms the promised video has begun, then creates progress.
 
+The first sentence carries the hook; the next 2-3 sentences raise concrete stakes. Pick a hook family from `mediastorm-observed-patterns.md` that the real material can pay off.
+
 Reject a hook that only greets, announces an agenda, stacks pain and promises, asks a fake viewer question, gives away the whole answer, or works only because the cover explains it.
 
 **Gate condition:** a cold viewer can identify the topic, reason to stay, and source of credibility from the opening itself.
@@ -136,7 +139,8 @@ Write a complete rough spoken draft before adding timestamps, HKRR labels, or cl
 5. Preserve useful asymmetry: fragments, short reactions, occasional longer thought, hesitation, or qualification when natural.
 6. Prefer specific nouns, verbs, screens, objects, and consequences over abstract labels.
 7. Give only the context needed to perform or understand the next step.
-8. Read it aloud. Mark every place the mouth resists or the viewer could ask “so what?”
+8. Build each main point with the point unit (`phenomenon -> number -> everyday conversion -> analogy -> example`), skipping links that do not help.
+9. Read it aloud. Mark every place the mouth resists or the viewer could ask “so what?”
 
 Do not polish with synonyms. Fix weak content by adding a real detail, opinion, conflict, action, or proof; otherwise delete it.
 
@@ -155,6 +159,8 @@ Map the full runtime proportionally to 12 points. `12/3/6/9` are structural big 
 
 For each point record only what production needs: exact time, HKRR role, stimulus or payoff, and visible/audible execution. When the map forces filler, change the map or runtime instead of adding words.
 
+For videos longer than about two minutes, make each section a self-contained short video with its own mini-hook and payoff, and put the strongest section payoffs on 12/3/6/9. As a density check, aim for roughly one clear excitement point per ~500 spoken characters.
+
 **Gate condition:** all four elements are present, the cardinal points are meaningfully stronger, and no 20-30 second stretch is only abstract explanation.
 
 ### Gate 5: Rewrite And Run The Drop-Off Audit
@@ -165,7 +171,7 @@ Integrate the retention design into the spoken draft, then inspect exact lines i
 2. **Density:** Is any section repeating one meaning, listing features, or front-loading background?
 3. **Speech:** Is the sentence comfortable in one breath and natural in this creator's mouth?
 
-Run the AI-pattern audit from `human-voice-and-editorial-audit.md`. Treat patterns as diagnostic clues, not a banned-word style recipe. Flag exact lines and rewrite from creator evidence. Preserve intentional repetition or formality when it belongs to the creator.
+Run the AI-pattern audit from `human-voice-and-editorial-audit.md` and the audit checklist in `mediastorm-observed-patterns.md` (immediate self-answers, at least one true turn, no borrowed 影视飓风 catchphrases or CTA). Treat patterns as diagnostic clues, not a banned-word style recipe. Flag exact lines and rewrite from creator evidence. Preserve intentional repetition or formality when it belongs to the creator.
 
 **Gate condition:** the audit names no unresolved high-risk drop-off point, no invented personal detail, and no paragraph that could be pasted into any product video unchanged.
 
@@ -191,6 +197,7 @@ Review the result as someone who did not attend the planning conversation:
 - Does each section create emotion, understanding, recognition, or movement?
 - Are HKRR roles rotating rather than clustering into one long lecture?
 - Can a shooter and editor act without asking what a row means?
+- If time allows, recommend a 3-5 viewer pre-screen (点映) of the rough cut and fix the earliest common dip first.
 
 Score H, K, R, and Rhythm from 0-5 with exact timestamp evidence, deficiency, and one revision action. Revise before delivery when any element is below 3, the total is below 15, a creator-voice final lacks voice evidence, a major claim lacks proof, a timed line does not fit, or an edit source lacks a capture row.
 
