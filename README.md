@@ -86,6 +86,7 @@ references/
 
 - 这是一个辅助创作的 Skill，不是自动生成好视频的按钮。高质量结果依赖真实素材、产品事实、观众信息、创作者声音和持续的人机交互。
 - 本 Skill 的理论起点来自影视飓风公开内容中的 HKRR 理论和时钟理论；仓库中的流程、提示和模板是独立整理与实现。
+- `references/mediastorm-observed-patterns.md` 整理了影视飓风已发布视频中可观察到的写法（开头钩子类型、提升立意、论点单元、自问自答节奏、长视频拆成短视频链、升华四步、点映），参考了两个 MIT 许可的社区分析项目 [imfangli/mediastorm-copywriter](https://github.com/imfangli/mediastorm-copywriter) 与 [phaseddd/PhasedddSkill 的 tim-mediastorm](https://github.com/phaseddd/PhasedddSkill/tree/main/tim-mediastorm)，内容为我们自己的整理和改写。截至 2026-10-22 未找到影视飓风官方发布的脚本 Skill。
 - HKRR 和 12 点时钟用于设计与诊断，不替代创作者的判断，也不要求每个刺激点都新增一句解释。
 - 本项目与影视飓风、Tim 或 Beav 没有官方关联，也不代表其立场或获得其背书。
 - 工作流中关于内容流程、检查和素材组织的部分参考并独立改写了 [dbskill](https://github.com/dontbesilent2025/dbskill) 的公开方法。相关改编内容保留署名，并按仓库中的 [CC BY-NC 4.0](LICENSE) 发布；请阅读许可证后再用于商业项目。
