@@ -19,7 +19,7 @@ HKRR and the stimulus clock are design and diagnosis tools. They must strengthen
 
 The conceptual foundation of this Skill is the HKRR theory and the 12-point clock theory publicly explained in 影视飓风 content, including the Douyin material published by the account `飓风世界`. This repository is an independent implementation for AI-assisted script design and production planning; it is not an official 影视飓风 project and does not imply endorsement.
 
-The default handoff is one self-contained HTML file. It can generate a simplified shooting PNG locally. Create an optional capture CSV only when another operator explicitly needs sortable data.
+The default handoff is one self-contained HTML file rendered from a single JSON data block. It can show a teleprompter and generate a simplified shooting PNG locally. Create an optional capture CSV only when another operator explicitly needs sortable data.
 
 ## Non-Negotiable Rules
 
@@ -47,8 +47,8 @@ For a full concept, script, rewrite, or production package, read these before dr
 - `references/clock-theory.md`: HKRR design and the mandatory 12-point stimulus clock.
 - `references/timing-pacing-and-retention.md`: read-through timing, energy, micro pacing, and platform fit.
 - `references/creator-production-system.md`: capture planning, audio-first assembly, and production feasibility.
-- `references/output-specs-and-qc.md`: concise HTML contract, execution tables, validation, and scores.
-- `assets/video-script-package-template.html`: required self-contained final layout.
+- `references/output-specs-and-qc.md`: HTML data contract, validation, and scores.
+- `assets/video-script-package-template.html`: required self-contained final page; fill only its JSON data block.
 
 ## Working Modes
 
@@ -196,19 +196,13 @@ Score H, K, R, and Rhythm from 0-5 with exact timestamp evidence, deficiency, an
 
 ## Final HTML Contract
 
-Use `assets/video-script-package-template.html`. Keep it offline, self-contained, concise, and readable in this order:
+Use `assets/video-script-package-template.html` and follow `references/output-specs-and-qc.md`. The template is data-driven: copy it and replace only the JSON in `video-script-data`. The page renders three views in the creator's real order:
 
-1. `summary`: selected title, one-sentence premise, runtime, platform, context/voice status, HKRR total, and progress.
-2. `script`: the primary word-for-word AV timeline. This is the script and edit source of truth, with no duplicate edit table.
-3. `rhythm`: compact HKRR cards, proportional A/B timeline, and mandatory circular 12-point clock. Every point shows mark, exact time, HKRR role, and stimulus around the circumference.
-4. `shoot`: one simplified capture checklist with no more than five visible columns.
-5. `qc`: compact creator-voice, cold-viewer, HKRR, proof, and production diagnosis with one priority revision.
+1. `逐字稿`: opening-3-seconds card and the word-for-word AV script (spoken line first; picture, on-screen text, and edit cue under it), plus a teleprompter.
+2. `拍摄`: capture cards grouped by camera position, each with start -> action -> end, framing, acceptance, filename, and the lines recorded there.
+3. `节奏`: core decision, HKRR cards, the 12-point clock, the proportional A/B track, pre-shoot QC, and collapsed sources.
 
-Keep detailed sources collapsed. Do not show discarded angle lists, twelve title drafts, a question-payoff ledger, a viewer-journey table, separate AV/edit tables, or raw score worksheets unless the user explicitly asks. Those are working methods, not the shooting interface.
-
-Preserve only interactions that reduce work: persistent completion checks, unfinished-only filtering, progress, print, reset, and local generation/save of a simplified shooting PNG. Keep the Beav gradient, embedded icon, and name unless another brand is requested.
-
-The PNG includes title, premise, runtime/platform, compact HKRR guidance, the circular clock, and every capture row. It is a field sheet, not a screenshot of the full HTML.
+Write each fact once in the data. Do not add discarded angles, title worksheets, viewer-journey tables, or raw score sheets. The field-sheet PNG, progress, print, and checks are built in; do not re-implement them.
 
 Return no more than 1-2 user-facing files.
 
@@ -216,6 +210,6 @@ Return no more than 1-2 user-facing files.
 
 When performance data exists, align package, script timestamps, and stimulus points with metrics actually available. Diagnose the first place viewer behavior diverges from the planned state change. Classify the cause as package mismatch, relevance loss, weak content, payoff debt, proof failure, confusion, pacing, production quality, or CTA friction. Preserve reusable creator learnings, but treat one video's result as a hypothesis rather than a law.
 
-## Long HTML Write Rule
+## Data Write Rule
 
-For a long package, copy the template, replace one uniquely anchored section at a time, then validate the complete file. Remove every `{{PLACEHOLDER}}`, delete unused template rows, verify section IDs, timestamp continuity, clock times, shot-ID resolution, local interactions, offline assets, and readable final copy before handoff.
+Write the JSON data object in one pass, then open the HTML (or run it headless) and read `window.videoScriptCheck`. Deliver only when it is empty: no `{{PLACEHOLDER}}`, every shot ID resolves, times are continuous and end at the runtime, every must-shot is used, and the clock has 12 points.

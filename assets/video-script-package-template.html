@@ -2,1106 +2,1271 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{VIDEO_TITLE}} - 视频脚本与制作包</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>视频脚本</title>
   <style>
     :root {
-      --bg-top: #f6efe6;
-      --bg-mid: #efe6da;
-      --bg-bottom: #d7e7e1;
-      --paper: rgba(255, 250, 243, 0.82);
-      --ink: #3b332f;
-      --muted: #877a70;
-      --line: #e7d8c8;
-      --orange: #cf8a62;
-      --orange-dark: #a7623d;
-      --orange-soft: #f8e9dd;
-      --sage: #79a99d;
-      --sage-dark: #557e74;
-      --sage-soft: #e8f1ec;
-      --blue: #537f8f;
-      --blue-soft: #e7f0f1;
-      --danger: #b95043;
-      --shadow: 0 15px 32px rgba(104, 82, 62, 0.08);
+      --bg: #fdfcfa;
+      --glow: rgba(162, 120, 75, 0.08);
+      --surface: rgba(255, 255, 255, 0.7);
+      --surface-strong: rgba(255, 255, 255, 0.92);
+      --sunken: rgba(60, 45, 30, 0.04);
+      --line: rgba(25, 25, 25, 0.07);
+      --edge: rgba(255, 255, 255, 0.7);
+      --shadow: 0 1px 2px rgba(54, 43, 28, 0.04), 0 4px 14px rgba(54, 43, 28, 0.05);
+      --shadow-lg: 0 14px 36px rgba(54, 43, 28, 0.09);
+      --ink: #191919;
+      --ink-2: #5d564b;
+      --ink-3: #8d867b;
+      --accent: #a2784b;
+      --accent-soft: rgba(162, 120, 75, 0.12);
+      --hot: #cf6f47;
+      --hot-soft: rgba(207, 111, 71, 0.12);
+      --h: #c08429;
+      --h-soft: rgba(192, 132, 41, 0.13);
+      --k: #4d7ca6;
+      --k-soft: rgba(77, 124, 166, 0.12);
+      --r: #b0627a;
+      --r-soft: rgba(176, 98, 122, 0.12);
+      --rh: #4f927a;
+      --rh-soft: rgba(79, 146, 122, 0.13);
+      --a-roll: #a2784b;
+      --a-roll-soft: rgba(162, 120, 75, 0.14);
+      --b-roll: #4d7ca6;
+      --b-roll-soft: rgba(77, 124, 166, 0.13);
+      --screen: #7a68b0;
+      --screen-soft: rgba(122, 104, 176, 0.13);
+      --ok: #3b8a57;
+      --hook-bg: #1f1d1b;
+      --hook-ink: #f4efe8;
+      --hook-muted: rgba(244, 239, 232, 0.55);
+      --hook-accent: #e6b980;
       color-scheme: light;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0e0e0e;
+        --glow: rgba(214, 176, 128, 0.07);
+        --surface: rgba(38, 38, 38, 0.6);
+        --surface-strong: rgba(48, 48, 48, 0.9);
+        --sunken: rgba(255, 255, 255, 0.04);
+        --line: rgba(255, 255, 255, 0.07);
+        --edge: rgba(255, 255, 255, 0.05);
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.3);
+        --ink: #e8e6e3;
+        --ink-2: #b0aba4;
+        --ink-3: #7c7872;
+        --accent: #d6b080;
+        --accent-soft: rgba(214, 176, 128, 0.14);
+        --hot: #ec8a61;
+        --hot-soft: rgba(236, 138, 97, 0.15);
+        --h: #e0a84f; --h-soft: rgba(224, 168, 79, 0.15);
+        --k: #7eaad3; --k-soft: rgba(126, 170, 211, 0.14);
+        --r: #d98ba2; --r-soft: rgba(217, 139, 162, 0.14);
+        --rh: #79c2a5; --rh-soft: rgba(121, 194, 165, 0.14);
+        --a-roll: #d6b080; --a-roll-soft: rgba(214, 176, 128, 0.15);
+        --b-roll: #7eaad3; --b-roll-soft: rgba(126, 170, 211, 0.14);
+        --screen: #a998dc; --screen-soft: rgba(169, 152, 220, 0.15);
+        --ok: #6cc28a;
+        --hook-bg: rgba(48, 46, 43, 0.9);
+        color-scheme: dark;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0e0e0e; --glow: rgba(214, 176, 128, 0.07); --surface: rgba(38, 38, 38, 0.6); --surface-strong: rgba(48, 48, 48, 0.9);
+      --sunken: rgba(255, 255, 255, 0.04); --line: rgba(255, 255, 255, 0.07); --edge: rgba(255, 255, 255, 0.05);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(0, 0, 0, 0.1); --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.3);
+      --ink: #e8e6e3; --ink-2: #b0aba4; --ink-3: #7c7872; --accent: #d6b080; --accent-soft: rgba(214, 176, 128, 0.14);
+      --hot: #ec8a61; --hot-soft: rgba(236, 138, 97, 0.15); --h: #e0a84f; --h-soft: rgba(224, 168, 79, 0.15);
+      --k: #7eaad3; --k-soft: rgba(126, 170, 211, 0.14); --r: #d98ba2; --r-soft: rgba(217, 139, 162, 0.14);
+      --rh: #79c2a5; --rh-soft: rgba(121, 194, 165, 0.14); --a-roll: #d6b080; --a-roll-soft: rgba(214, 176, 128, 0.15);
+      --b-roll: #7eaad3; --b-roll-soft: rgba(126, 170, 211, 0.14); --screen: #a998dc; --screen-soft: rgba(169, 152, 220, 0.15);
+      --ok: #6cc28a; --hook-bg: rgba(48, 46, 43, 0.9); color-scheme: dark;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      min-height: 100vh;
       margin: 0;
-      background:
-        radial-gradient(105% 48% at 50% 38%, rgba(248, 224, 204, 0.62) 0%, rgba(248, 224, 204, 0.18) 50%, transparent 78%),
-        radial-gradient(90% 38% at 50% 100%, rgba(202, 228, 219, 0.56) 0%, rgba(226, 240, 234, 0.28) 58%, transparent 82%),
-        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 56%, var(--bg-bottom) 100%);
-      background-attachment: fixed;
+      min-height: 100vh;
+      background: radial-gradient(1100px 520px at 85% -12%, var(--glow), transparent 62%), var(--bg);
       color: var(--ink);
-      font-size: 14px;
-      line-height: 1.55;
+      font: 14px/1.6 "SF Pro Text", -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
     }
-    button, input { font: inherit; }
-    button, a, label { -webkit-tap-highlight-color: transparent; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 { line-height: 1.2; letter-spacing: 0; }
-    h1 { margin-bottom: 10px; font-size: 34px; }
-    h2 { margin-bottom: 6px; font-size: 25px; }
-    h3 { margin-bottom: 8px; font-size: 16px; }
-    b, strong { font-weight: 750; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    h1, h2, h3, p { margin: 0; }
+    .num { font-variant-numeric: tabular-nums; }
+    .page { width: min(880px, 100%); margin: 0 auto; padding: 28px 16px 72px; }
 
-    .page { display: flex; width: min(1380px, calc(100% - 28px)); flex-direction: column; margin: 0 auto; padding: 24px 0 64px; }
-    #summary { order: 1; }
-    .toolbar { order: 2; }
-    #script { order: 3; }
-    #rhythm { order: 4; }
-    #shoot { order: 5; }
-    #qc { order: 6; }
-    .beav-footer { order: 7; }
-    .hero, .toolbar, .panel {
-      border: 1px solid rgba(230, 215, 199, 0.88);
-      border-radius: 8px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
-    }
-    .hero { position: relative; overflow: hidden; padding: 26px 28px; }
-    .hero::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--orange); }
-    .eyebrow { margin-bottom: 8px; color: var(--orange-dark); font-size: 11px; font-weight: 800; text-transform: uppercase; }
-    .promise { max-width: 880px; margin-bottom: 0; color: var(--muted); font-size: 16px; }
-    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 8px; margin-top: 18px; }
-    .metric { min-width: 0; padding: 10px 11px; border: 1px solid rgba(231, 216, 200, 0.9); border-radius: 6px; background: rgba(255, 253, 248, 0.76); }
-    .metric span { display: block; color: var(--muted); font-size: 11px; }
-    .metric strong { display: block; margin-top: 3px; overflow-wrap: anywhere; font-size: 15px; }
+    /* Header */
+    .brand { display: flex; gap: 8px; align-items: center; color: var(--ink-3); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+    .brand img { width: 20px; height: 20px; border-radius: 6px; }
+    h1 { margin-top: 12px; font-size: clamp(24px, 4.6vw, 32px); line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; }
+    .promise { margin-top: 8px; color: var(--ink-2); font-size: 15px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .chip { display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); color: var(--ink-2); font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .chip.warn { background: var(--h-soft); box-shadow: none; color: var(--h); }
+    .chip.good { background: var(--rh-soft); box-shadow: none; color: var(--rh); }
+    .brief { display: grid; gap: 8px; margin: 2px 0 14px; padding: 16px 18px; }
+    .brief div { display: grid; grid-template-columns: 84px 1fr; gap: 10px; }
+    .brief dt { color: var(--accent); font-size: 13px; font-weight: 600; }
+    .brief dd { margin: 0; color: var(--ink-2); font-size: 13px; }
 
-    .toolbar { position: sticky; top: 8px; z-index: 30; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; padding: 9px 10px; background: rgba(255, 253, 248, 0.86); backdrop-filter: blur(16px); }
-    .toolbar a, .control, .toggle { display: inline-flex; min-height: 34px; align-items: center; justify-content: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, 0.82); color: var(--ink); text-decoration: none; cursor: pointer; }
-    .toolbar a { border-color: transparent; background: transparent; font-weight: 700; }
-    .toolbar a:hover, .control:hover { border-color: #cbb7a1; background: #fffaf4; }
-    .toolbar-spacer { flex: 1 1 auto; }
-    .toggle { gap: 7px; }
-    .toggle input, .task-check { width: 17px; height: 17px; accent-color: var(--orange); }
-    .control.primary { border-color: var(--ink); background: var(--ink); color: #fff; }
-    .control.export { border-color: var(--orange-dark); background: var(--orange); color: #fff; }
-    .control.export:hover { border-color: var(--orange-dark); background: var(--orange-dark); }
-    .control.danger { color: var(--danger); }
+    .notice { display: flex; gap: 10px; margin-top: 18px; padding: 12px 14px; border-radius: 16px; background: var(--h-soft); color: var(--ink); font-size: 13px; }
+    .notice b { flex: none; color: var(--h); }
+    .notice.issues { background: var(--hot-soft); }
+    .notice.issues b { color: var(--hot); }
+    .notice ul { margin: 4px 0 0; padding-left: 18px; color: var(--ink-2); }
 
-    .panel { margin-top: 16px; padding: 24px; scroll-margin-top: 70px; }
-    .section-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .section-head p { margin: 0; color: var(--muted); }
-    .section-progress { min-width: 180px; }
-    .progress-label { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
-    .progress-track { height: 7px; margin-top: 5px; overflow: hidden; border-radius: 99px; background: #eadfd2; }
-    .progress-fill { width: 0; height: 100%; background: var(--orange); transition: width 160ms ease; }
-    #edit-progress-fill { background: var(--sage); }
-    .action-note { margin-bottom: 14px; padding: 10px 12px; border-left: 4px solid var(--orange); border-radius: 5px; background: #fff5eb; color: var(--muted); }
+    .hook { margin: 0 0 14px; padding: 18px 20px; border-radius: 22px; background: var(--hook-bg); color: var(--hook-ink); box-shadow: var(--shadow-lg); }
+    .hook-head { display: flex; justify-content: space-between; color: var(--hook-accent); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+    .hook-head span { color: var(--hook-muted); font-weight: 600; letter-spacing: 0; }
+    .hook-row { display: grid; grid-template-columns: 22px 1fr; gap: 10px; margin-top: 10px; font-size: 15px; }
+    .hook-row b { color: var(--hook-muted); font-weight: 600; }
+    .hook-row .say { font-size: 17px; font-weight: 600; line-height: 1.5; }
 
-    .table-wrap { width: 100%; overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px; border: 1px solid var(--line); vertical-align: top; text-align: left; }
-    th { background: #f6ede4; color: var(--muted); font-size: 11px; white-space: nowrap; }
-    td { background: rgba(255, 253, 248, 0.7); }
-    tr.completed td { background: rgba(225, 238, 233, 0.56); color: #8b8178; }
-    tr.completed .shot-id { text-decoration: line-through; }
-    body.unfinished-only tr.completed { display: none; }
-    .capture-table { min-width: 1180px; }
-    .edit-table { min-width: 1540px; }
-    .done-cell { width: 42px; text-align: center; }
-    .shot-id { display: block; color: var(--ink); font-size: 15px; }
-    .subline { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
-    .instruction-line { display: block; margin-bottom: 4px; }
-    .instruction-line:last-child { margin-bottom: 0; }
-    .tag, .clip-id { display: inline-flex; align-items: center; min-height: 22px; margin: 3px 4px 0 0; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 800; }
-    .tag { background: var(--sage-soft); color: var(--sage-dark); }
-    .tag.a, .clip-id.a { background: var(--orange-soft); color: var(--orange-dark); }
-    .tag.b, .clip-id.b { background: var(--blue-soft); color: #456f7d; }
-    .tag.must { background: #f8e2dd; color: var(--danger); }
-    .tag.big { background: var(--orange-soft); color: var(--orange-dark); }
-    .voiceover { min-width: 310px; padding: 9px 10px; border-left: 3px solid var(--sage); background: var(--sage-soft); color: var(--ink); }
+    /* Tabs */
+    .tabs { position: sticky; top: 0; z-index: 20; margin: 24px -16px 0; padding: 10px 16px; background: linear-gradient(var(--bg) 70%, transparent); }
+    .seg { display: grid; grid-template-columns: repeat(3, 1fr); padding: 4px; border-radius: 999px; background: var(--sunken); }
+    .seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-size: 14px; font-weight: 600; transition: background 0.18s, color 0.18s, box-shadow 0.18s; }
+    .seg button[aria-selected="true"] { background: var(--surface-strong); box-shadow: var(--shadow); color: var(--ink); }
+    .seg .count { color: var(--ink-3); font-size: 12px; font-weight: 600; }
 
-    .subsection { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
-    .subsection-head { max-width: 820px; margin-bottom: 13px; }
-    .subsection-head p { margin-bottom: 0; color: var(--muted); }
-    .design-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .design-item { min-width: 0; padding: 14px; border-right: 1px solid var(--line); }
-    .design-item:last-child { border-right: 0; }
-    .design-item b, .qc-item b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; text-transform: uppercase; }
-    .design-item span { display: block; overflow-wrap: anywhere; }
-    .package-table { min-width: 760px; }
-    .decision-table { min-width: 900px; }
-    .journey-table { min-width: 1040px; }
-    .hkrr-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .hkrr-item { min-width: 0; padding: 16px; border-right: 1px solid var(--line); }
-    .hkrr-item:last-child { border-right: 0; }
-    .hkrr-title { display: flex; gap: 9px; align-items: center; margin-bottom: 10px; }
-    .hkrr-title h3 { margin: 0; }
-    .hkrr-mark { display: inline-flex; width: 28px; height: 28px; flex: 0 0 28px; align-items: center; justify-content: center; border-radius: 50%; background: var(--orange-soft); color: var(--orange-dark); font-size: 12px; font-weight: 850; }
-    .hkrr-item[data-element="knowledge"] .hkrr-mark { background: var(--blue-soft); color: var(--blue); }
-    .hkrr-item[data-element="resonance"] .hkrr-mark { background: #f3e5df; color: #9b604f; }
-    .hkrr-item[data-element="rhythm"] .hkrr-mark { background: var(--sage-soft); color: var(--sage-dark); }
-    .hkrr-item p { margin: 8px 0 0; color: var(--muted); }
-    .hkrr-item p b { color: var(--ink); }
-    .source-appendix { margin-top: 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .source-appendix > summary { padding: 13px 2px; cursor: pointer; font-weight: 800; }
-    .source-appendix > summary::marker { color: var(--orange); }
-    .source-body { padding: 0 2px 14px; }
-    .key-value { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 9px; padding: 8px 0; border-top: 1px solid rgba(231, 216, 200, 0.72); }
-    .key-value b { color: var(--muted); font-size: 11px; }
+    .view { margin-top: 8px; }
+    .view[hidden] { display: none; }
+    .view-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin: 10px 0 12px; }
+    .view-head p { color: var(--ink-3); font-size: 13px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 13px; border: 0; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow); color: var(--ink); font-size: 13px; font-weight: 600; transition: background 0.15s; }
+    .btn:hover { background: var(--surface-strong); }
+    .btn.quiet { background: transparent; box-shadow: none; color: var(--ink-3); }
+    .btn.quiet:hover { color: var(--ink); background: var(--sunken); }
+    .btn svg { width: 15px; height: 15px; }
+    .btn.on { background: var(--accent-soft); box-shadow: none; color: var(--accent); }
 
-    .rhythm-wrap { width: 100%; overflow-x: auto; padding: 18px 0 12px; border-radius: 8px; background: linear-gradient(180deg, rgba(255, 251, 245, 0.36), rgba(237, 245, 239, 0.3)); scrollbar-color: #d5c4b2 transparent; }
-    .rhythm-strip { position: relative; width: 1000px; min-width: 1000px; height: 780px; margin: 0 auto; }
-    .rhythm-dial { position: absolute; z-index: 0; top: 50%; left: 50%; width: 500px; height: 500px; border: 1px solid #e7d9c8; border-radius: 50%; background: radial-gradient(circle at center, #fffdf8 0 27%, #f9f0e2 27.5% 57%, rgba(255, 253, 248, 0.82) 57.5%); box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.42), 0 12px 24px rgba(103, 80, 58, 0.06); transform: translate(-50%, -50%); }
-    .rhythm-dial::before, .rhythm-dial::after { content: ""; position: absolute; z-index: 0; top: 50%; left: 50%; width: 76%; height: 1px; background: #eadfce; transform: translate(-50%, -50%); }
-    .rhythm-dial::after { transform: translate(-50%, -50%) rotate(90deg); }
-    .rhythm-point { position: absolute; z-index: 3; left: var(--x); top: var(--y); width: 0; height: 0; }
-    .rhythm-point::after { content: ""; position: absolute; z-index: 0; top: 0; left: 0; width: 27px; height: 1px; background: #d9cdbf; transform: rotate(var(--leader-angle)); transform-origin: 0 50%; }
-    .rhythm-marker { position: absolute; z-index: 2; top: 0; left: 0; display: block; width: 10px; height: 10px; border: 2px solid #fffaf4; border-radius: 50%; background: #cdbfb1; box-shadow: 0 0 0 1px #cdbfb1; transform: translate(-50%, -50%); }
-    .rhythm-point.big .rhythm-marker { width: 15px; height: 15px; background: var(--orange); box-shadow: 0 0 0 5px rgba(207, 138, 98, 0.14); }
-    .rhythm-copy { position: absolute; z-index: 4; width: 184px; min-height: 66px; padding: 7px 9px; border-left: 2px solid #cdbfb1; border-radius: 0 6px 6px 0; background: rgba(255, 253, 248, 0.88); box-shadow: 0 5px 14px rgba(103, 80, 58, 0.05); transform: var(--copy-transform); }
-    .rhythm-point.left .rhythm-copy { border-right: 2px solid #cdbfb1; border-left: 0; border-radius: 6px 0 0 6px; text-align: right; }
-    .rhythm-point.axis .rhythm-copy { border-top: 2px solid #cdbfb1; border-left: 0; border-radius: 0 0 6px 6px; text-align: center; }
-    .rhythm-point.big .rhythm-copy { border-color: var(--orange); background: rgba(248, 233, 221, 0.94); }
-    .rhythm-copy strong { display: flex; gap: 7px; align-items: baseline; color: var(--ink); line-height: 1.1; }
-    .rhythm-point.left .rhythm-copy strong { justify-content: flex-end; }
-    .rhythm-point.axis .rhythm-copy strong { justify-content: center; }
-    .rhythm-mark { color: var(--ink); font-size: 16px; }
-    .rhythm-copy time { color: #76685d; font-size: 11px; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .rhythm-hkrr, .rhythm-label { display: block; overflow-wrap: anywhere; }
-    .rhythm-hkrr { margin-top: 5px; color: var(--sage-dark); font-size: 9px; font-weight: 850; line-height: 1.2; }
-    .rhythm-point.big .rhythm-hkrr { color: var(--orange-dark); }
-    .rhythm-label { margin-top: 3px; color: var(--ink); font-size: 11px; font-weight: 750; line-height: 1.32; }
-    .point-12 { --x: 50%; --y: 17.95%; --leader-angle: -90deg; --copy-transform: translate(-50%, calc(-100% - 27px)); }
-    .rhythm-point.point-12 .rhythm-copy { border-top: 0; border-bottom: 2px solid #cdbfb1; border-radius: 6px 6px 0 0; }
-    .rhythm-point.point-12.big .rhythm-copy { border-bottom-color: var(--orange); }
-    .point-1 { --x: 62.5%; --y: 22.24%; --leader-angle: -60deg; --copy-transform: translate(27px, calc(-100% + 8px)); }
-    .point-2 { --x: 71.65%; --y: 33.97%; --leader-angle: -30deg; --copy-transform: translate(27px, -50%); }
-    .point-3 { --x: 75%; --y: 50%; --leader-angle: 0deg; --copy-transform: translate(27px, -50%); }
-    .point-4 { --x: 71.65%; --y: 66.03%; --leader-angle: 30deg; --copy-transform: translate(27px, -50%); }
-    .point-5 { --x: 62.5%; --y: 77.76%; --leader-angle: 60deg; --copy-transform: translate(27px, 8px); }
-    .point-6 { --x: 50%; --y: 82.05%; --leader-angle: 90deg; --copy-transform: translate(-50%, 27px); }
-    .point-7 { --x: 37.5%; --y: 77.76%; --leader-angle: 120deg; --copy-transform: translate(calc(-100% - 27px), 8px); }
-    .point-8 { --x: 28.35%; --y: 66.03%; --leader-angle: 150deg; --copy-transform: translate(calc(-100% - 27px), -50%); }
-    .point-9 { --x: 25%; --y: 50%; --leader-angle: 180deg; --copy-transform: translate(calc(-100% - 27px), -50%); }
-    .point-10 { --x: 28.35%; --y: 33.97%; --leader-angle: 210deg; --copy-transform: translate(calc(-100% - 27px), -50%); }
-    .point-11 { --x: 37.5%; --y: 22.24%; --leader-angle: 240deg; --copy-transform: translate(calc(-100% - 27px), calc(-100% + 8px)); }
-    .rhythm-point.finish { left: 50%; top: 50%; z-index: 5; display: block; width: 188px; height: 188px; border: 1px solid #e8d8bc; border-radius: 50%; background: #fff7e7; box-shadow: 0 8px 22px rgba(111, 83, 54, 0.07); transform: translate(-50%, -50%); }
-    .rhythm-point.finish::after, .rhythm-point.finish .rhythm-marker { display: none; }
-    .rhythm-point.finish .rhythm-copy { position: static; display: flex; width: 100%; height: 100%; min-height: 0; flex-direction: column; align-items: center; justify-content: center; padding: 22px; border: 0; border-radius: 50%; background: transparent; box-shadow: none; text-align: center; transform: none; }
-    .rhythm-point.finish .rhythm-copy strong { display: block; }
-    .rhythm-point.finish .rhythm-mark { display: block; font-size: 30px; line-height: 1; }
-    .rhythm-point.finish .rhythm-copy time { display: block; margin-top: 7px; }
-    .rhythm-point.finish .rhythm-hkrr { margin-top: 10px; color: var(--orange-dark); }
-    .rhythm-point.finish .rhythm-label { max-width: 140px; margin-top: 5px; font-size: 12px; }
+    .card { border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); }
 
-    .timeline-legend { display: flex; gap: 12px; margin: 15px 0 8px; color: var(--muted); font-size: 11px; }
-    .legend-item { display: inline-flex; gap: 5px; align-items: center; }
-    .swatch { width: 12px; height: 12px; border-radius: 3px; }
-    .swatch.a { background: var(--orange-soft); border: 1px solid #e1b690; }
-    .swatch.b { background: var(--blue-soft); border: 1px solid #b8d0d6; }
-    .timeline-scroll { width: 100%; overflow-x: auto; padding: 7px 0 14px; }
-    .timeline-map { display: flex; gap: 4px; min-width: 1180px; }
-    .timeline-segment { flex: var(--duration, 1) 0 104px; min-width: 104px; overflow: hidden; border: 1px solid var(--line); border-top: 4px solid var(--sage); border-radius: 6px; background: rgba(255, 255, 255, 0.72); }
-    .timeline-segment.big { border-top-color: var(--orange); }
-    .segment-time { padding: 7px 8px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 800; font-variant-numeric: tabular-nums; }
-    .segment-title { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-weight: 500; }
-    .track-cell { min-height: 32px; padding: 6px 8px; border-bottom: 1px solid var(--line); font-size: 10px; }
-    .track-cell:last-child { border-bottom: 0; }
-    .track-cell.a { background: rgba(250, 226, 207, 0.72); color: var(--orange-dark); }
-    .track-cell.b { background: rgba(231, 240, 241, 0.82); color: #456f7d; }
-    .track-cell b { display: block; margin-bottom: 2px; font-size: 9px; text-transform: uppercase; }
+    /* Script */
+    .beats { overflow: hidden; }
+    .beat { display: grid; grid-template-columns: 54px minmax(0, 1fr) 30px; gap: 12px; padding: 16px 16px 16px 18px; border-top: 1px solid var(--line); transition: background 0.4s; }
+    .beat:first-child { border-top: 0; }
+    .beat.flash { background: var(--accent-soft); }
+    .beat .t { color: var(--ink-3); font-size: 12px; font-weight: 600; line-height: 26px; }
+    .mark { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; margin-top: 2px; padding: 0 5px; border-radius: 999px; background: var(--sunken); color: var(--ink-2); font-size: 11px; font-weight: 700; }
+    .mark.big { background: var(--hot); color: #fff; }
+    .line { font-size: 16px; line-height: 1.65; font-weight: 500; }
+    .delivery { margin-top: 2px; color: var(--ink-3); font-size: 12px; }
+    .meta { display: grid; gap: 4px; margin: 8px 0 0; font-size: 13px; color: var(--ink-2); }
+    .meta > div { display: grid; grid-template-columns: 30px 1fr; gap: 6px; }
+    .meta dt, .meta .k { color: var(--accent); font-size: 12px; font-weight: 600; line-height: 21px; }
+    .ids { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-right: 6px; vertical-align: 1px; }
+    .id { display: inline-flex; align-items: center; height: 19px; padding: 0 6px; border: 0; border-radius: 6px; background: var(--b-roll-soft); color: var(--b-roll); font: 700 11px/1 ui-monospace, "SF Mono", Menlo, monospace; }
+    .id.a { background: var(--a-roll-soft); color: var(--a-roll); }
+    .id.screen { background: var(--screen-soft); color: var(--screen); }
+    button.id:hover { filter: brightness(0.95); text-decoration: underline; }
+    .hk { display: inline-flex; gap: 2px; margin-left: 6px; vertical-align: 1px; }
+    .hk i { display: inline-flex; align-items: center; justify-content: center; height: 17px; padding: 0 5px; border-radius: 5px; font: 700 10px/1 inherit; font-style: normal; }
+    .hk .H { background: var(--h-soft); color: var(--h); }
+    .hk .K { background: var(--k-soft); color: var(--k); }
+    .hk .R { background: var(--r-soft); color: var(--r); }
+    .hk .Rh { background: var(--rh-soft); color: var(--rh); }
+    .check { appearance: none; display: grid; place-items: center; width: 24px; height: 24px; margin: 2px 0 0; border: 1.5px solid var(--ink-3); border-radius: 50%; opacity: 0.55; cursor: pointer; transition: all 0.15s; }
+    .check:hover { opacity: 1; }
+    .check::after { content: ""; width: 9px; height: 5px; margin-top: -2px; border: solid #fff; border-width: 0 0 2px 2px; transform: rotate(-45deg) scale(0); transition: transform 0.15s; }
+    .check:checked { border-color: var(--ok); background: var(--ok); opacity: 1; }
+    .check:checked::after { transform: rotate(-45deg) scale(1); }
+    .beat.done .line, .beat.done .meta { opacity: 0.45; }
 
-    .qc-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .qc-item { min-width: 0; padding: 14px; border-right: 1px solid var(--line); }
-    .qc-item:last-child { border-right: 0; }
-    .qc-item strong, .qc-item span { display: block; overflow-wrap: anywhere; }
-    .qc-item strong { color: var(--orange-dark); font-size: 18px; }
-    .qc-item span { margin-top: 4px; color: var(--muted); }
-    .qc-table { min-width: 1060px; }
-    .score-badge { display: inline-flex; min-width: 42px; height: 28px; align-items: center; justify-content: center; border-radius: 5px; background: var(--orange-soft); color: var(--orange-dark); font-weight: 850; }
-    .risk { margin-top: 10px; padding: 10px; border-left: 3px solid var(--danger); background: #f8e2dd; }
+    /* Shoot */
+    .progress { min-width: 220px; flex: 1 1 220px; max-width: 360px; }
+    .progress-text { display: flex; justify-content: space-between; color: var(--ink-2); font-size: 13px; font-weight: 600; }
+    .progress-text span { color: var(--ink-3); font-weight: 500; }
+    .bar { height: 6px; margin-top: 6px; overflow: hidden; border-radius: 999px; background: var(--sunken); }
+    .bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--ok); transition: width 0.25s; }
+    .group-title { margin: 20px 4px 8px; color: var(--ink-3); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; }
+    .shots { display: grid; gap: 10px; }
+    .shot { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; padding: 16px 18px; transition: opacity 0.2s, background 0.4s; scroll-margin-top: 80px; }
+    .shot.flash { background: var(--accent-soft); }
+    .shot .check { width: 26px; height: 26px; opacity: 0.7; }
+    .shot-top { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+    .shot-top h3 { font-size: 15px; font-weight: 650; }
+    .pri { font-size: 11px; font-weight: 700; color: var(--ink-3); }
+    .pri.must { color: var(--hot); }
+    .steps { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: baseline; margin-top: 8px; font-size: 13px; color: var(--ink); }
+    .steps span b { margin-right: 4px; color: var(--accent); font-size: 12px; }
+    .steps .arrow { color: var(--ink-3); }
+    .small { margin-top: 6px; color: var(--ink-3); font-size: 12px; }
+    .small code { font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; color: var(--ink-2); }
+    .accept { margin-top: 6px; font-size: 13px; color: var(--ink-2); }
+    .accept b { color: var(--ok); font-weight: 600; margin-right: 4px; }
+    .lines { margin-top: 8px; font-size: 13px; }
+    .lines summary { color: var(--accent); font-weight: 600; cursor: pointer; list-style: none; }
+    .lines summary::-webkit-details-marker { display: none; }
+    .lines summary::before { content: "▸ "; }
+    .lines[open] summary::before { content: "▾ "; }
+    .lines ol { margin: 6px 0 0; padding: 10px 12px 10px 30px; border-radius: 12px; background: var(--sunken); color: var(--ink-2); }
+    .lines li { margin: 2px 0; }
+    .lines li span { color: var(--ink-3); font-size: 12px; margin-right: 6px; }
+    .shot.done { opacity: 0.5; }
+    .shot.done h3 { text-decoration: line-through; }
+    body.only-todo .shot.done { display: none; }
 
-    .brief-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: rgba(255, 253, 248, 0.58); }
-    .brief-item { min-width: 0; padding: 13px 14px; border-right: 1px solid var(--line); }
-    .brief-item:last-child { border-right: 0; }
-    .brief-item b { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; text-transform: uppercase; }
-    .brief-item span { display: block; overflow-wrap: anywhere; }
-    .script-table { min-width: 1040px; table-layout: fixed; }
-    .script-table th:nth-child(1) { width: 48px; }
-    .script-table th:nth-child(2) { width: 150px; }
-    .script-table th:nth-child(3) { width: 36%; }
-    .script-table th:nth-child(4) { width: 30%; }
-    .script-table th:nth-child(5) { width: 24%; }
-    .script-time strong { display: block; font-size: 14px; font-variant-numeric: tabular-nums; }
-    .spoken-line { margin: 0; color: var(--ink); font-size: 16px; font-weight: 630; line-height: 1.72; }
-    .spoken-note { display: block; margin-top: 7px; color: var(--muted); font-size: 11px; }
-    .track-line { display: block; margin-bottom: 8px; }
-    .track-line:last-child { margin-bottom: 0; }
-    .track-line .clip-id { margin-top: 0; vertical-align: 1px; }
-    .edit-cue strong { display: block; margin-bottom: 5px; }
-    .edit-cue span { display: block; color: var(--muted); font-size: 12px; }
-    .shoot-table { min-width: 980px; table-layout: fixed; }
-    .shoot-table th:nth-child(1) { width: 48px; }
-    .shoot-table th:nth-child(2) { width: 150px; }
-    .shoot-table th:nth-child(3) { width: 25%; }
-    .shoot-table th:nth-child(4) { width: 37%; }
-    .shoot-table th:nth-child(5) { width: 28%; }
-    .output-line { display: block; margin-bottom: 6px; }
-    .output-line:last-child { margin-bottom: 0; }
-    .output-line b { color: var(--muted); font-size: 11px; }
-    .hkrr-score { display: inline-flex; min-width: 38px; min-height: 24px; align-items: center; justify-content: center; margin-top: 10px; border-radius: 5px; background: var(--orange-soft); color: var(--orange-dark); font-size: 11px; font-weight: 850; }
-    .hkrr-item[data-element="knowledge"] .hkrr-score { background: var(--blue-soft); color: var(--blue); }
-    .hkrr-item[data-element="rhythm"] .hkrr-score { background: var(--sage-soft); color: var(--sage-dark); }
-    .qc-verdict { margin: 0; color: var(--ink); font-size: 14px; }
-    #script > .design-grid, #script > .subsection, #script > .source-appendix { display: none; }
-    #qc > .action-note, #qc > .subsection-head, #qc > .table-wrap, #qc > .subsection { display: none; }
-    .qc-verdict strong { color: var(--orange-dark); }
+    /* Rhythm */
+    .hkrr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .hk-card { padding: 16px 18px; }
+    .hk-card header { display: flex; align-items: center; gap: 10px; }
+    .letter { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; font-weight: 800; font-size: 14px; }
+    .hk-card h3 { font-size: 14px; font-weight: 650; }
+    .hk-card h3 small { display: block; color: var(--ink-3); font-size: 11px; font-weight: 600; }
+    .dots { margin-left: auto; display: flex; gap: 3px; align-items: center; color: var(--ink-3); font-size: 12px; font-weight: 600; }
+    .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+    .dots i.on { background: currentColor; }
+    .hk-card p { margin-top: 10px; font-size: 13px; color: var(--ink); }
+    .hk-card p + p { margin-top: 4px; color: var(--ink-3); font-size: 12px; }
+    .total { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; margin: 12px 4px 0; color: var(--ink-2); font-size: 13px; }
+    .total b { color: var(--ink); font-size: 15px; }
+    .section-title { margin: 26px 4px 10px; font-size: 15px; font-weight: 650; }
+    .section-title small { margin-left: 8px; color: var(--ink-3); font-size: 12px; font-weight: 500; }
+    .clock { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 18px; align-items: center; padding: 18px; }
+    .dial { width: 100%; max-width: 290px; margin: 0 auto; display: block; }
+    .dial .ring { fill: none; stroke: var(--line); stroke-width: 10; }
+    .dial .ring2 { fill: none; stroke: var(--line); stroke-width: 1; }
+    .dial .pt { fill: var(--surface-strong); stroke: var(--ink-3); stroke-width: 1.5; transition: r 0.15s; cursor: pointer; }
+    .dial .pt.big { fill: var(--hot); stroke: var(--hot); }
+    .dial .pt.on { stroke-width: 4; }
+    .dial text { fill: var(--ink-2); font-size: 11px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    .dial text.time { fill: var(--ink-3); font-size: 9.5px; font-weight: 600; }
+    .dial .f1 { fill: var(--ink); font-size: 26px; font-weight: 800; }
+    .dial .f2 { fill: var(--ink-3); font-size: 11px; }
+    .points { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+    .points li { display: grid; grid-template-columns: 26px 38px 44px minmax(0, 1fr); gap: 8px; align-items: center; padding: 4px 8px; border-radius: 10px; font-size: 13px; transition: background 0.15s; }
+    .points li.on { background: var(--sunken); }
+    .points li .mark { margin: 0; }
+    .points time { color: var(--ink-3); font-size: 12px; font-weight: 600; }
+    .points .role { color: var(--ink-3); font-size: 11px; font-weight: 700; }
+    .points li.finish { margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--line); border-radius: 0; }
+    .track { padding: 18px 18px 14px; }
+    .lane { position: relative; display: flex; height: 30px; margin-top: 6px; border-radius: 8px; overflow: hidden; background: var(--sunken); }
+    .lane-label { display: flex; justify-content: space-between; margin-top: 10px; color: var(--ink-3); font-size: 11px; font-weight: 700; }
+    .lane-label:first-child { margin-top: 0; }
+    .seg-a, .seg-b { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding: 0 5px; overflow: hidden; border-right: 2px solid var(--bg); white-space: nowrap; font: 700 10px/1 ui-monospace, "SF Mono", Menlo, monospace; }
+    .seg-a { background: var(--a-roll-soft); color: var(--a-roll); }
+    .seg-b { background: var(--b-roll-soft); color: var(--b-roll); }
+    .seg-b.screen { background: var(--screen-soft); color: var(--screen); }
+    .ticks { position: relative; height: 22px; }
+    .ticks span { position: absolute; top: 2px; transform: translateX(-50%); }
+    .ticks .mark { min-width: 18px; height: 18px; font-size: 10px; padding: 0 3px; }
+    .axis { display: flex; justify-content: space-between; margin-top: 6px; color: var(--ink-3); font-size: 11px; }
+    .qc { padding: 6px 18px; }
+    .qc div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 13px; }
+    .qc div:first-child { border-top: 0; }
+    .qc dt { color: var(--ink-3); font-weight: 600; }
+    .qc dd { margin: 0; color: var(--ink); }
+    .qc dd b { margin-right: 6px; color: var(--hot); }
+    details.sources { margin-top: 10px; padding: 0 18px; }
+    details.sources summary { padding: 14px 0; color: var(--ink-2); font-size: 13px; font-weight: 600; cursor: pointer; }
+    details.sources dl { margin: 0 0 12px; }
 
-    .beav-footer { display: flex; flex-direction: column; gap: 7px; align-items: center; padding: 24px 0 8px; }
-    .beav-footer img { display: block; width: 42px; height: 42px; border-radius: 12px; box-shadow: 0 4px 14px rgba(58, 47, 42, 0.12); }
-    .beav-footer span { color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1; }
+    footer.foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-top: 36px; color: var(--ink-3); font-size: 12px; }
+    footer.foot span { display: inline-flex; gap: 6px; align-items: center; }
+    footer.foot img { width: 16px; height: 16px; border-radius: 5px; }
 
-    .shooting-poster-modal { position: fixed; z-index: 80; inset: 0; overflow-y: auto; padding: 18px; background: rgba(45, 39, 35, 0.68); backdrop-filter: blur(10px); }
-    .shooting-poster-modal[hidden] { display: none; }
-    .shooting-poster-panel { width: min(760px, 100%); margin: 0 auto; overflow: hidden; border: 1px solid rgba(230, 215, 199, 0.92); border-radius: 8px; background: #fffaf4; box-shadow: 0 24px 70px rgba(42, 34, 29, 0.28); }
-    .shooting-poster-head { position: sticky; top: 0; z-index: 2; display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(14px); }
-    .shooting-poster-head h2 { margin: 0; font-size: 17px; }
-    .shooting-poster-actions { display: flex; gap: 8px; margin-left: auto; }
-    .shooting-poster-actions button { min-height: 36px; padding: 6px 11px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); cursor: pointer; }
-    .shooting-poster-actions .save-poster { border-color: var(--orange-dark); background: var(--orange); color: #fff; font-weight: 800; }
-    .shooting-poster-actions button:disabled { cursor: wait; opacity: 0.56; }
-    .shooting-poster-body { padding: 14px; }
-    .shooting-poster-body img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-top); }
-    .shooting-poster-status { min-height: 20px; margin: 9px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
-    #shooting-poster-canvas { display: none; }
+    /* Overlays */
+    .overlay { position: fixed; inset: 0; z-index: 50; }
+    .overlay[hidden] { display: none; }
+    .prompter { background: #000; color: #fff; }
+    .prompter-scroll { position: absolute; inset: 0; overflow-y: auto; padding: 42vh max(24px, 8vw) 60vh; scrollbar-width: none; }
+    .prompter-scroll::-webkit-scrollbar { display: none; }
+    .prompter.mirror .prompter-scroll { transform: scaleX(-1); }
+    .prompter p { margin: 0 0 0.9em; font-size: clamp(26px, 5.4vw, 46px); line-height: 1.5; font-weight: 600; opacity: 0.32; transition: opacity 0.25s; }
+    .prompter p.now { opacity: 1; }
+    .guide { position: absolute; left: 0; right: 0; top: 40vh; height: 2px; background: rgba(230, 185, 128, 0.35); pointer-events: none; }
+    .prompter-bar { position: absolute; left: 50%; max-width: calc(100vw - 24px); bottom: max(18px, env(safe-area-inset-bottom)); display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(40, 40, 40, 0.85); transform: translateX(-50%); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+    .prompter-bar button { height: 38px; min-width: 40px; padding: 0 12px; white-space: nowrap; border: 0; border-radius: 999px; background: transparent; color: #fff; font-size: 14px; font-weight: 600; }
+    .prompter-bar button:hover, .prompter-bar button.on { background: rgba(255, 255, 255, 0.14); }
+    .prompter-bar .speed { display: inline-flex; align-items: center; min-width: 44px; white-space: nowrap; justify-content: center; color: rgba(255, 255, 255, 0.6); font-size: 13px; }
+    .modal { display: grid; place-items: center; padding: 16px; background: rgba(20, 16, 12, 0.42); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .sheet { display: flex; flex-direction: column; width: min(520px, 100%); max-height: calc(100vh - 32px); border-radius: 24px; background: var(--bg); box-shadow: var(--shadow-lg); overflow: hidden; }
+    .sheet header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; }
+    .sheet header h2 { font-size: 15px; }
+    .sheet .body { padding: 0 16px 16px; overflow: auto; }
+    .sheet img { display: block; width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
+    .sheet .hint { margin-top: 8px; color: var(--ink-3); font-size: 12px; text-align: center; }
+    canvas#poster { display: none; }
 
-    @media (max-width: 820px) {
-      .summary, .brief-strip, .design-grid, .hkrr-grid, .qc-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .brief-item:nth-child(2) { border-right: 0; }
-      .brief-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .design-item:nth-child(2), .qc-item:nth-child(2), .hkrr-item:nth-child(2) { border-right: 0; }
-      .design-item:nth-child(-n+2), .qc-item:nth-child(-n+2), .hkrr-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .toolbar { position: static; }
-      .toolbar-spacer { display: none; }
-    }
-    @media (max-width: 560px) {
-      .page { width: min(100% - 16px, 1380px); padding-top: 8px; }
-      .hero, .panel { padding: 17px; }
-      h1 { font-size: 31px; }
-      .summary { grid-template-columns: 1fr 1fr; }
-      .toolbar a { flex: 1; }
-      .toggle { width: 100%; }
-      .control.export { flex: 1 1 calc(50% - 4px); }
-      .rhythm-wrap { margin-inline: -17px; width: calc(100% + 34px); border-radius: 0; }
-      .brief-strip, .design-grid, .hkrr-grid, .qc-summary { grid-template-columns: 1fr; }
-      .brief-item, .design-item, .hkrr-item, .qc-item { border-right: 0; border-bottom: 1px solid var(--line); }
-      .brief-item:last-child, .design-item:last-child, .hkrr-item:last-child, .qc-item:last-child { border-bottom: 0; }
-      .key-value { grid-template-columns: 1fr; gap: 3px; }
+    @media (max-width: 640px) {
+      .page { padding-top: 20px; }
+      .beat { grid-template-columns: 44px minmax(0, 1fr) 26px; gap: 10px; padding: 14px 12px 14px 14px; }
+      .line { font-size: 15.5px; }
+      .hkrr { grid-template-columns: 1fr; }
+      .clock { grid-template-columns: 1fr; }
+      .points li { grid-template-columns: 24px 36px 40px minmax(0, 1fr); padding: 4px 4px; }
+      .shot { padding: 14px; gap: 10px; }
+      .qc div { grid-template-columns: 1fr; gap: 2px; }
+      .seg button { font-size: 13.5px; }
+      .steps { flex-direction: column; gap: 2px; }
+      .steps .arrow { display: none; }
+      .view-head p { flex: 1 1 0; min-width: 0; }
     }
     @media print {
-      body { background: #fff; }
-      .page { width: 100%; padding: 0; }
-      .toolbar { display: none !important; }
-      .shooting-poster-modal { display: none !important; }
-      .hero, .panel { box-shadow: none; }
-      body.unfinished-only tr.completed { display: table-row; }
-      .table-wrap, .rhythm-wrap, .timeline-scroll { overflow: visible; }
-      .capture-table, .edit-table, .script-table, .shoot-table, .timeline-map { min-width: 0; }
-      .rhythm-strip { width: 1000px; min-width: 1000px; }
-      .panel { break-inside: avoid; }
-      details > .source-body { display: block !important; }
+      body { background: #fff; color: #111; }
+      .tabs, .actions, .check, .overlay, .notice.issues, footer.foot .btn { display: none !important; }
+      .view[hidden] { display: block !important; }
+      .view { break-before: page; }
+      #view-script { break-before: auto; }
+      .card { box-shadow: none; border: 1px solid #e5e0d8; -webkit-backdrop-filter: none; backdrop-filter: none; }
+      .hook { box-shadow: none; }
+      .beat, .shot, .hk-card, .clock, .track, .qc { break-inside: avoid; }
+      .shot { grid-template-columns: 1fr; }
+      .beat { grid-template-columns: 54px minmax(0, 1fr); }
+      .hook { background: #f4f1ec; color: #111; }
+      .hook-row b, .hook-head span { color: #8d867b; }
+      .hook-head { color: #a2784b; }
+      .lines ol { display: block; }
+      body.only-todo .shot.done { display: grid; }
     }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 </head>
-<body data-package-id="{{PACKAGE_ID}}">
-  <main class="page">
-    <header id="summary" class="hero">
-      <p class="eyebrow">Beav video work order</p>
-      <h1>{{VIDEO_TITLE}}</h1>
-      <p class="promise">{{ONE_SENTENCE_PROMISE}}</p>
-      <div class="summary">
-        <div class="metric"><span>目标时长</span><strong>{{DURATION_TARGET}}</strong></div>
-        <div class="metric"><span>发布平台</span><strong>{{PLATFORM}}</strong></div>
-        <div class="metric"><span>作者语气</span><strong>{{VOICE_STATUS}}</strong></div>
-        <div class="metric"><span>HKRR 评分</span><strong>{{TOTAL_HKRR_SCORE}} / 20</strong></div>
-        <div class="metric"><span>拍摄进度</span><strong id="capture-summary">0/0</strong></div>
-        <div class="metric"><span>剪辑进度</span><strong id="edit-summary">0/0</strong></div>
-      </div>
-      <div class="brief-strip" aria-label="本片核心创作决定">
-        <div class="brief-item"><b>核心内容</b><span data-poster-angle>{{CORE_POINT}}</span></div>
-        <div class="brief-item"><b>这条片子的任务</b><span>{{VIDEO_JOB}}</span></div>
-        <div class="brief-item"><b>观众卡点</b><span>{{VIEWER_TENSION}}</span></div>
-        <div class="brief-item"><b>证据引擎</b><span>{{PROOF_ENGINE}}</span></div>
-      </div>
-    </header>
+<body>
+  <!--
+    Beav video script template.
+    Fill ONLY the JSON inside <script id="video-script-data">. Everything visible is rendered from it.
+    Field reference: references/output-specs-and-qc.md. Never write the characters "</" inside the JSON; use "<\/".
+  -->
+  <script type="application/json" id="video-script-data">
+{
+  "example": true,
+  "id": "sample-desk-lamp-2026-10",
+  "title": "一盏 99 元台灯，手机口播不再黑脸",
+  "promise": "不买补光灯，转个桌子、摆好一盏台灯，今晚就能拍出脸不黑、眼镜不反光的口播。",
+  "runtimeSeconds": 72,
+  "platform": "抖音 · 竖屏 9:16",
+  "voice": {
+    "status": "provisional",
+    "label": "待你读一遍",
+    "note": "沿用了你旧视频里的「我自己踩过的坑」「先别急」；整段还没经过你出声读。"
+  },
+  "core": {
+    "point": "黑脸不是灯不够亮，是光的方向错了：窗放侧面、灯朝墙。",
+    "tension": "买了补光灯脸是亮了，眼镜全是反光；不开灯又黑。",
+    "proof": "同一部手机、同一个位置的开灯前后对比，加三个房间实测。"
+  },
+  "fixFirst": "开头的前后对比是全片的钩子：先确认上周旧视频里有同样构图的一句，没有就改用今天「关灯 / 开灯」同机位对比。",
+  "script": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 4,
+      "clock": "12",
+      "hkrr": "K+H",
+      "line": "左边这条是我上周拍的，右边这条，只多了一盏九十九块的台灯。",
+      "delivery": "语速正常，不铺垫",
+      "a": "A01",
+      "b": [
+        "B01"
+      ],
+      "picture": "左右分屏，同一句话，左黑右亮",
+      "text": "同一部手机 只差一盏灯",
+      "cue": "第 1 帧就是分屏，不放片头"
+    },
+    {
+      "id": "S02",
+      "start": 4,
+      "end": 9,
+      "line": "脸不黑，背景也不过曝。灯就放这个位置，你家桌上现在就能摆。",
+      "a": "A01",
+      "b": [
+        "B02"
+      ],
+      "picture": "说到「这个位置」切桌面俯拍",
+      "cue": "俯拍停 1.5 秒"
+    },
+    {
+      "id": "S03",
+      "start": 9,
+      "end": 15,
+      "clock": "1",
+      "hkrr": "R",
+      "line": "很多人第一反应是买补光灯对着脸打。我试过，脸是亮了，可眼镜全是反光。",
+      "a": "A01",
+      "b": [
+        "B03"
+      ],
+      "picture": "补光灯正打，镜片两块白斑",
+      "text": "正面直打 = 眼镜反光"
+    },
+    {
+      "id": "S04",
+      "start": 15,
+      "end": 21,
+      "clock": "2",
+      "hkrr": "K",
+      "line": "问题不在灯不够亮，在方向。窗户在你身后，手机按整个画面测光，就把你压暗了。",
+      "a": "A01",
+      "b": [
+        "B04"
+      ],
+      "picture": "背对窗口播，人脸发黑",
+      "text": "背后有窗 → 人脸被压暗"
+    },
+    {
+      "id": "S05",
+      "start": 21,
+      "end": 27,
+      "clock": "3",
+      "hkrr": "K+H",
+      "line": "所以第一步，把桌子转九十度，让窗户在你侧面，不在身后。",
+      "a": "A01",
+      "b": [
+        "B05"
+      ],
+      "picture": "转桌快放，亮度当场变化",
+      "text": "① 窗户放侧面",
+      "cue": "转完停 1 秒让亮度差被看见"
+    },
+    {
+      "id": "S06",
+      "start": 27,
+      "end": 33,
+      "clock": "4",
+      "hkrr": "K",
+      "line": "第二步，台灯放另一侧，比眼睛高一点，斜着往下照，离脸一臂远。",
+      "a": "A02",
+      "b": [
+        "B02"
+      ],
+      "picture": "侧身把灯移到侧上方",
+      "text": "② 另一侧 · 高于眼睛 · 一臂远"
+    },
+    {
+      "id": "S07",
+      "start": 33,
+      "end": 39,
+      "clock": "5",
+      "hkrr": "K",
+      "line": "灯头朝墙，别直接对脸，墙会把光变软。这一步就省了一块柔光布。",
+      "a": "A02",
+      "b": [
+        "B06"
+      ],
+      "picture": "灯头转向墙，墙上一片暖光",
+      "text": "③ 灯头朝墙"
+    },
+    {
+      "id": "S08",
+      "start": 39,
+      "end": 45,
+      "clock": "6",
+      "hkrr": "H",
+      "line": "你看，同样的位置。开灯之前。开灯之后。",
+      "delivery": "两个短句之间停半拍",
+      "a": "A01",
+      "b": [
+        "B07"
+      ],
+      "picture": "同机位关灯 / 开灯硬切",
+      "cue": "静音半秒，只留开关声"
+    },
+    {
+      "id": "S09",
+      "start": 45,
+      "end": 51,
+      "clock": "7",
+      "hkrr": "K",
+      "line": "手机这边只做一件事：长按人脸锁住曝光，再往下拉一点点。",
+      "a": "A01",
+      "b": [
+        "B08"
+      ],
+      "picture": "录屏：长按人脸，出现锁定，往下拉",
+      "text": "长按锁定曝光"
+    },
+    {
+      "id": "S10",
+      "start": 51,
+      "end": 57,
+      "clock": "8",
+      "hkrr": "R",
+      "line": "我自己踩过的坑是开着美颜。脸一亮，美颜会把皮肤抹成一片。先关掉，后期再说。",
+      "delivery": "看镜头，语气轻一点",
+      "a": "A01",
+      "b": [],
+      "picture": "保持口播，不切",
+      "text": "先关美颜"
+    },
+    {
+      "id": "S11",
+      "start": 57,
+      "end": 63,
+      "clock": "9",
+      "hkrr": "K+R",
+      "line": "这套摆法我在三个房间试过，朝北的卧室最难，也能拍。",
+      "a": "A01",
+      "b": [
+        "B09"
+      ],
+      "picture": "三个房间各 2 秒，朝北卧室放最后",
+      "text": "3 个房间实测"
+    },
+    {
+      "id": "S12",
+      "start": 63,
+      "end": 68,
+      "clock": "10",
+      "hkrr": "R",
+      "line": "灯也不用新买，家里那盏能调角度的就行，颜色选跟窗光接近的。",
+      "a": "A01",
+      "b": [
+        "B10"
+      ],
+      "picture": "家里旧台灯，手调角度",
+      "text": "旧台灯也行"
+    },
+    {
+      "id": "S13",
+      "start": 68,
+      "end": 72,
+      "clock": "11",
+      "hkrr": "H",
+      "line": "今晚就把桌子转个方向，拍一条，跟你昨天那条放一起看。",
+      "a": "A01",
+      "b": [],
+      "picture": "回到正面，看镜头说完",
+      "cue": "说完停 1 秒再结束"
+    }
+  ],
+  "shots": [
+    {
+      "id": "A01",
+      "type": "A",
+      "priority": "must",
+      "what": "正面口播（主机位）",
+      "where": "书房桌前，窗在侧面",
+      "start": "坐定，看镜头",
+      "action": "按逐字稿分段说，每段说完停 1 秒",
+      "end": "看镜头停 1 秒",
+      "framing": "竖屏中近景，手机与眼睛平齐，离人约 1 米",
+      "takes": "每段 2 条",
+      "file": "A01_口播_主机位.mov",
+      "accept": "脸上没有反光，眼睛里有光点",
+      "privacy": "背景收起私人物品"
+    },
+    {
+      "id": "A02",
+      "type": "A",
+      "priority": "must",
+      "what": "侧身摆灯演示",
+      "where": "同一张桌子",
+      "start": "灯在桌角关着",
+      "action": "边说边把灯移到侧上方，灯头转向墙",
+      "end": "手离开灯，看回镜头",
+      "framing": "中景，桌面和灯都在画面里",
+      "takes": "2 条",
+      "file": "A02_摆灯演示.mov",
+      "accept": "灯的高度和朝向看得清"
+    },
+    {
+      "id": "B01",
+      "type": "B",
+      "priority": "must",
+      "what": "上周旧视频 vs 今天，同一句话",
+      "start": "找出旧视频里同一句",
+      "action": "两边各截 3 秒",
+      "end": "并排",
+      "framing": "左右分屏",
+      "file": "B01_前后对比.mov",
+      "accept": "两边构图一致，只差光",
+      "privacy": "确认旧素材可用"
+    },
+    {
+      "id": "B02",
+      "type": "B",
+      "priority": "should",
+      "what": "桌面俯拍：窗、人、灯的位置",
+      "start": "空桌面",
+      "action": "人坐下，灯摆好",
+      "end": "停 2 秒",
+      "framing": "顶拍，手机架在头顶",
+      "file": "B02_俯拍灯位.mov",
+      "accept": "看得出窗—人—灯三者位置"
+    },
+    {
+      "id": "B03",
+      "type": "B",
+      "priority": "must",
+      "what": "补光灯正打，眼镜反光特写",
+      "start": "戴眼镜正对补光灯",
+      "action": "慢慢转头",
+      "end": "镜片出现白斑",
+      "framing": "特写，镜片占画面一半",
+      "file": "B03_眼镜反光.mov",
+      "accept": "反光一眼能看出"
+    },
+    {
+      "id": "B04",
+      "type": "B",
+      "priority": "should",
+      "what": "背对窗口播，人脸发黑",
+      "start": "背对窗坐好",
+      "action": "说一句话",
+      "end": "停 1 秒",
+      "framing": "与 A01 同构图",
+      "file": "B04_逆光黑脸.mov",
+      "accept": "窗亮、脸黑，对比明显"
+    },
+    {
+      "id": "B05",
+      "type": "B",
+      "priority": "must",
+      "what": "转桌 90°",
+      "start": "窗在身后",
+      "action": "转桌到窗在侧面",
+      "end": "坐回原位",
+      "framing": "固定机位，后期快放",
+      "file": "B05_转桌.mov",
+      "accept": "转之前和转之后的亮度差肉眼可见"
+    },
+    {
+      "id": "B06",
+      "type": "B",
+      "priority": "optional",
+      "what": "灯头朝墙，墙上的光",
+      "start": "灯头对脸",
+      "action": "转向墙",
+      "end": "墙上一片暖光",
+      "framing": "近景，带到墙面",
+      "file": "B06_灯朝墙.mov",
+      "accept": "光从硬变软"
+    },
+    {
+      "id": "B07",
+      "type": "B",
+      "priority": "must",
+      "what": "同机位关灯 / 开灯",
+      "start": "关灯坐好",
+      "action": "伸手开灯",
+      "end": "停 3 秒",
+      "framing": "与 A01 完全同构图，机位不动",
+      "file": "B07_开灯前后.mov",
+      "accept": "听得到开关声，构图没动"
+    },
+    {
+      "id": "B08",
+      "type": "screen",
+      "priority": "must",
+      "what": "手机相机：长按锁定曝光并下拉",
+      "start": "相机打开，对着人脸",
+      "action": "长按人脸，出现锁定，往下拉",
+      "end": "画面稍暗停 1 秒",
+      "framing": "手机录屏",
+      "file": "B08_锁定曝光.mp4",
+      "accept": "锁定提示清楚出现",
+      "privacy": "先关通知"
+    },
+    {
+      "id": "B09",
+      "type": "B",
+      "priority": "should",
+      "what": "三个房间同样摆法",
+      "start": "每个房间摆好灯",
+      "action": "各说同一句话 3 秒",
+      "end": "朝北卧室最后拍",
+      "framing": "与 A01 同景别",
+      "file": "B09_三个房间.mov",
+      "accept": "三条都不黑脸"
+    },
+    {
+      "id": "B10",
+      "type": "B",
+      "priority": "optional",
+      "what": "家里旧台灯，手调角度",
+      "start": "旧灯在桌角",
+      "action": "手调灯臂角度",
+      "end": "灯头朝墙",
+      "framing": "近景",
+      "file": "B10_旧台灯.mov",
+      "accept": "看得出是普通家用灯"
+    }
+  ],
+  "hkrr": {
+    "H": {
+      "score": 4,
+      "effect": "「一下变亮了」的前后对比是全片爽点",
+      "evidence": "0:00 分屏、0:21 转桌、0:39 开灯硬切"
+    },
+    "K": {
+      "score": 5,
+      "effect": "三步摆灯加一个手机设置，看完能照做",
+      "evidence": "0:21–0:51 四个可模仿动作，每步有字卡"
+    },
+    "R": {
+      "score": 3,
+      "effect": "被眼镜反光、黑脸困扰过的人会对号入座",
+      "evidence": "0:09 反光、0:51 美颜坑；还缺一句真实观众原话"
+    },
+    "Rh": {
+      "score": 4,
+      "effect": "四个大刺激分布在全片；每 5–6 秒换一次画面",
+      "evidence": "0:39 静音半秒，制造全片唯一的停顿"
+    }
+  },
+  "clock": [
+    {
+      "mark": "12",
+      "time": "0:00",
+      "role": "K+H",
+      "label": "前后分屏：只差一盏灯"
+    },
+    {
+      "mark": "1",
+      "time": "0:09",
+      "role": "R",
+      "label": "补光灯直打，眼镜反光"
+    },
+    {
+      "mark": "2",
+      "time": "0:15",
+      "role": "K",
+      "label": "原因：手机按整个画面测光"
+    },
+    {
+      "mark": "3",
+      "time": "0:21",
+      "role": "K+H",
+      "label": "转桌 90°，画面当场变亮"
+    },
+    {
+      "mark": "4",
+      "time": "0:27",
+      "role": "K",
+      "label": "灯：另一侧、高于眼睛"
+    },
+    {
+      "mark": "5",
+      "time": "0:33",
+      "role": "K",
+      "label": "灯头朝墙，省一块柔光布"
+    },
+    {
+      "mark": "6",
+      "time": "0:39",
+      "role": "H",
+      "label": "静音半秒，开灯前后硬切"
+    },
+    {
+      "mark": "7",
+      "time": "0:45",
+      "role": "K",
+      "label": "长按锁定曝光"
+    },
+    {
+      "mark": "8",
+      "time": "0:51",
+      "role": "R",
+      "label": "我踩过的坑：美颜抹平皮肤"
+    },
+    {
+      "mark": "9",
+      "time": "0:57",
+      "role": "K+R",
+      "label": "三个房间实测"
+    },
+    {
+      "mark": "10",
+      "time": "1:03",
+      "role": "R",
+      "label": "旧台灯就够"
+    },
+    {
+      "mark": "11",
+      "time": "1:08",
+      "role": "H",
+      "label": "今晚就试一条"
+    }
+  ],
+  "finish": {
+    "time": "1:12",
+    "label": "转桌子拍一条，和昨天那条放一起看"
+  },
+  "qc": {
+    "dropOff": {
+      "time": "0:15",
+      "risk": "原理段偏抽象，已用背对窗的黑脸实拍（B04）撑住"
+    },
+    "aiPattern": "无高风险；0:21–0:39 三句「第 x 步」句式接近，读的时候可以打散",
+    "blockers": "B01 依赖上周旧视频里同构图的一句话",
+    "verdict": "知识和爽点都够，共鸣还可以加一句评论区真实提问"
+  },
+  "sources": {
+    "used": "你的两条旧口播、评论区 12 条「怎么不黑脸」的提问、台灯商品页",
+    "missing": "朝北卧室的实拍还没做",
+    "assumptions": "假设你的桌子能转到窗户在侧面",
+    "doNotClaim": "不说「影棚效果」；不报具体流明数"
+  }
+}
+  </script>
 
-    <nav class="toolbar" aria-label="制作操作">
-      <a href="#script">1. 逐字稿</a>
-      <a href="#rhythm">2. HKRR 与时钟</a>
-      <a href="#shoot">3. 拍摄清单</a>
-      <a href="#qc">4. 开拍前检查</a>
-      <span class="toolbar-spacer"></span>
-      <label class="toggle"><input type="checkbox" data-action="unfinished">只看未完成</label>
-      <button class="control export" type="button" data-action="shooting-poster">生成拍摄图</button>
-      <button class="control primary" type="button" data-action="print">打印 / PDF</button>
-      <button class="control danger" type="button" data-action="reset">重置进度</button>
-    </nav>
-
-    <section id="script" class="panel">
-      <div class="section-head">
-        <div><h2>1. 成片逐字稿</h2><p>从上到下就是剪辑顺序；同一行直接对应口播、A/B 轨和剪辑动作。</p></div>
-        <div class="section-progress">
-          <div class="progress-label"><span>剪辑</span><strong id="edit-progress-text">0/0</strong></div>
-          <div class="progress-track"><div class="progress-fill" id="edit-progress-fill"></div></div>
-        </div>
-      </div>
-
-      <div class="action-note"><strong>审核方法：</strong>先只读“逐字口播”一列。它得像你会说的话；通过之后，再按右侧镜头 ID 铺 A/B 轨。</div>
-      <div class="table-wrap">
-        <table class="script-table">
-          <thead><tr><th>完成</th><th>时间 / 节拍</th><th>逐字口播</th><th>A-roll / B-roll</th><th>剪辑动作</th></tr></thead>
-          <tbody>
-            <tr data-task-row data-phase="edit" data-clock-mark="{{SCRIPT_CLOCK_MARK}}">
-              <td class="done-cell"><input class="task-check" type="checkbox" id="edit-{{SCRIPT_ID}}" aria-label="{{SCRIPT_ID}} 剪辑完成"></td>
-              <td class="script-time"><strong>{{SCRIPT_TIME}}</strong><span class="subline">Clock {{SCRIPT_CLOCK_MARK}}</span><span class="tag {{SCRIPT_SIZE_CLASS}}">{{SCRIPT_STIMULUS}}</span><span class="tag">{{SCRIPT_HKRR}}</span></td>
-              <td><p class="spoken-line">{{SCRIPT_SPOKEN_LINE}}</p><span class="spoken-note">{{SCRIPT_DELIVERY_NOTE}}</span></td>
-              <td><span class="track-line"><b class="clip-id a">A-roll</b>{{SCRIPT_AROLL}}</span><span class="track-line"><b class="clip-id b">B-roll</b>{{SCRIPT_BROLL}}</span></td>
-              <td class="edit-cue"><strong>{{SCRIPT_ON_SCREEN_TEXT}}</strong><span>{{SCRIPT_EDIT_CUE}}</span></td>
-            </tr>
-            <!-- Duplicate one row per performance or editorial beat. Every shot ID must exist in the capture list. -->
-          </tbody>
-        </table>
-      </div>
-
-    </section>
-
-    <section id="shoot" class="panel">
-      <div class="section-head">
-        <div><h2>3. 拍摄清单</h2><p>按镜头 ID 拍；文件名不要改，拍完当场按验收条件勾选。</p></div>
-        <div class="section-progress">
-          <div class="progress-label"><span>拍摄</span><strong id="capture-progress-text">0/0</strong></div>
-          <div class="progress-track"><div class="progress-fill" id="capture-progress-fill"></div></div>
-        </div>
-      </div>
-      <div class="action-note"><strong>开拍标准：</strong>每条素材都有明确起点、动作、终点和验收条件；A-roll 行写完整台词，有旁白时单列录音任务。</div>
-      <div class="table-wrap">
-        <table class="shoot-table">
-          <thead><tr><th>完成</th><th>ID / 类型</th><th>拍什么</th><th>怎么拍</th><th>文件与验收</th></tr></thead>
-          <tbody>
-            <tr data-task-row data-phase="capture" data-shot-id="{{SHOT_ID}}">
-              <td class="done-cell"><input class="task-check" type="checkbox" id="capture-simple-{{SHOT_ID}}" aria-label="{{SHOT_ID}} 拍摄完成"></td>
-              <td data-shot-meta><strong class="shot-id">{{SHOT_ID}}</strong><span class="tag {{SHOT_TYPE_CLASS}}">{{SHOT_TYPE}}</span><span class="tag {{SHOT_PRIORITY_CLASS}}">{{SHOT_PRIORITY}}</span></td>
-              <td data-shot-content><strong>{{SHOT_CONTENT}}</strong><span class="subline">{{SHOT_SCENE}} · {{SHOT_SOURCE}}</span></td>
-              <td data-shot-direction><span class="instruction-line"><b>起：</b>{{SHOT_START}}</span><span class="instruction-line"><b>拍：</b>{{SHOT_ACTION}}</span><span class="instruction-line"><b>止：</b>{{SHOT_END}}</span><span class="subline">{{SHOT_FRAMING}} · {{SHOT_DURATION}} · {{SHOT_TAKES}}</span></td>
-              <td data-shot-output><span class="output-line"><b>文件：</b><strong>{{SHOT_FILE_NAME}}</strong></span><span class="output-line"><b>隐私：</b>{{SHOT_PRIVACY}}</span><span class="output-line"><b>验收：</b>{{SHOT_ACCEPTANCE}}</span></td>
-            </tr>
-            <!-- Duplicate one row per source asset. Keep every shot ID unique. -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="rhythm" class="panel">
-      <div class="section-head">
-        <div><h2>2. HKRR 与节奏</h2><p>HKRR 用来设计观看体验；时钟负责让四种作用有节奏地轮换。</p></div>
-      </div>
-
-      <div class="hkrr-grid">
-        <article class="hkrr-item" data-element="happiness"><div class="hkrr-title"><span class="hkrr-mark">H</span><h3>Happiness</h3></div><p><b>作用：</b>{{H_VIEWER_EFFECT}}</p><p><b>证据：</b>{{H_DEPLOYMENT}}</p><span class="hkrr-score">{{H_SCORE}} / 5</span></article>
-        <article class="hkrr-item" data-element="knowledge"><div class="hkrr-title"><span class="hkrr-mark">K</span><h3>Knowledge</h3></div><p><b>作用：</b>{{K_VIEWER_EFFECT}}</p><p><b>证据：</b>{{K_DEPLOYMENT}}</p><span class="hkrr-score">{{K_SCORE}} / 5</span></article>
-        <article class="hkrr-item" data-element="resonance"><div class="hkrr-title"><span class="hkrr-mark">R</span><h3>Resonance</h3></div><p><b>作用：</b>{{R_VIEWER_EFFECT}}</p><p><b>证据：</b>{{R_DEPLOYMENT}}</p><span class="hkrr-score">{{R_SCORE}} / 5</span></article>
-        <article class="hkrr-item" data-element="rhythm"><div class="hkrr-title"><span class="hkrr-mark">Rh</span><h3>Rhythm</h3></div><p><b>作用：</b>{{RHYTHM_VIEWER_EFFECT}}</p><p><b>证据：</b>{{RHYTHM_DEPLOYMENT}}</p><span class="hkrr-score">{{RHYTHM_SCORE}} / 5</span></article>
-      </div>
-
-      <h3>12 点可视化时钟节拍器</h3>
-      <div class="rhythm-wrap">
-        <div class="rhythm-strip" aria-label="12 点可视化时钟节拍器">
-          <div class="rhythm-dial" aria-hidden="true"></div>
-          <article class="rhythm-point point-12 axis big"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">12</b><time>{{CLOCK_12_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_12_HKRR}}</span><span class="rhythm-label">{{CLOCK_12_LABEL}}</span></div></article>
-          <article class="rhythm-point point-1 right"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">1</b><time>{{CLOCK_1_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_1_HKRR}}</span><span class="rhythm-label">{{CLOCK_1_LABEL}}</span></div></article>
-          <article class="rhythm-point point-2 right"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">2</b><time>{{CLOCK_2_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_2_HKRR}}</span><span class="rhythm-label">{{CLOCK_2_LABEL}}</span></div></article>
-          <article class="rhythm-point point-3 right big"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">3</b><time>{{CLOCK_3_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_3_HKRR}}</span><span class="rhythm-label">{{CLOCK_3_LABEL}}</span></div></article>
-          <article class="rhythm-point point-4 right"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">4</b><time>{{CLOCK_4_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_4_HKRR}}</span><span class="rhythm-label">{{CLOCK_4_LABEL}}</span></div></article>
-          <article class="rhythm-point point-5 right"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">5</b><time>{{CLOCK_5_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_5_HKRR}}</span><span class="rhythm-label">{{CLOCK_5_LABEL}}</span></div></article>
-          <article class="rhythm-point point-6 axis big"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">6</b><time>{{CLOCK_6_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_6_HKRR}}</span><span class="rhythm-label">{{CLOCK_6_LABEL}}</span></div></article>
-          <article class="rhythm-point point-7 left"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">7</b><time>{{CLOCK_7_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_7_HKRR}}</span><span class="rhythm-label">{{CLOCK_7_LABEL}}</span></div></article>
-          <article class="rhythm-point point-8 left"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">8</b><time>{{CLOCK_8_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_8_HKRR}}</span><span class="rhythm-label">{{CLOCK_8_LABEL}}</span></div></article>
-          <article class="rhythm-point point-9 left big"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">9</b><time>{{CLOCK_9_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_9_HKRR}}</span><span class="rhythm-label">{{CLOCK_9_LABEL}}</span></div></article>
-          <article class="rhythm-point point-10 left"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">10</b><time>{{CLOCK_10_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_10_HKRR}}</span><span class="rhythm-label">{{CLOCK_10_LABEL}}</span></div></article>
-          <article class="rhythm-point point-11 left"><i class="rhythm-marker" aria-hidden="true"></i><div class="rhythm-copy"><strong><b class="rhythm-mark">11</b><time>{{CLOCK_11_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_11_HKRR}}</span><span class="rhythm-label">{{CLOCK_11_LABEL}}</span></div></article>
-          <article class="rhythm-point finish"><div class="rhythm-copy"><strong><b class="rhythm-mark">F</b><time>{{CLOCK_FINISH_TIME}}</time></strong><span class="rhythm-hkrr">{{CLOCK_FINISH_HKRR}}</span><span class="rhythm-label">{{CLOCK_FINISH_LABEL}}</span></div></article>
-        </div>
-      </div>
-
-      <div class="timeline-legend"><span class="legend-item"><i class="swatch a"></i>A-roll</span><span class="legend-item"><i class="swatch b"></i>B-roll / 录屏 / 素材</span></div>
-      <div class="timeline-scroll">
-        <div class="timeline-map" aria-label="A-roll 与 B-roll 剪辑轨道">
-          <article class="timeline-segment {{SEGMENT_SIZE_CLASS}}" style="--duration:{{SEGMENT_DURATION_WEIGHT}}">
-            <div class="segment-time">{{EDIT_TIME}}<span class="segment-title">{{EDIT_TITLE}}</span></div>
-            <div class="track-cell a"><b>A-roll</b>{{EDIT_AROLL_IDS}}</div>
-            <div class="track-cell b"><b>B-roll</b>{{EDIT_BROLL_IDS}}</div>
-          </article>
-          <!-- Duplicate one proportional segment per edit row. -->
-        </div>
-      </div>
-
-    </section>
-
-    <section id="qc" class="panel">
-      <div class="section-head">
-        <div><h2>4. 开拍前检查</h2><p>只保留会改变脚本或拍摄的结论。</p></div>
-      </div>
-
-      <div class="qc-summary">
-        <div class="qc-item"><b>作者语气</b><strong>{{VOICE_STATUS}}</strong><span>{{CREATOR_FINGERPRINTS}}</span></div>
-        <div class="qc-item"><b>第一掉点</b><strong>{{FIRST_DROP_OFF_TIME}}</strong><span>{{FIRST_DROP_OFF_RISK}}</span></div>
-        <div class="qc-item"><b>AI 痕迹</b><strong>{{AI_PATTERN_STATUS}}</strong><span>{{AI_PATTERN_EVIDENCE}}</span></div>
-        <div class="qc-item"><b>开拍前只改这一处</b><strong>{{PRIORITY_REVISION_SHORT}}</strong><span>{{PRIORITY_REVISION}}</span></div>
-      </div>
-      <p class="qc-verdict"><strong>HKRR {{TOTAL_HKRR_SCORE}} / 20：</strong>{{HKRR_VERDICT}}<br><strong>证据 / 制作风险：</strong>{{PRODUCTION_RISK}}</p>
-      <details id="source-appendix-compact" class="source-appendix"><summary>上下文与证据附录</summary><div class="source-body">
-        <div class="key-value"><b>上下文状态</b><span>{{CONTEXT_STATUS}}</span></div>
-        <div class="key-value"><b>已使用</b><span>{{USED_CONTEXT}}</span></div>
-        <div class="key-value"><b>缺少</b><span>{{MISSING_CONTEXT}}</span></div>
-        <div class="key-value"><b>假设</b><span>{{ASSUMPTIONS}}</span></div>
-        <div class="key-value"><b>不可声称</b><span>{{DO_NOT_CLAIM}}</span></div>
-      </div></details>
-    </section>
-
-    <footer class="beav-footer" aria-label="Beav">
-      <img src="data:image/png;base64,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" alt="Beav" width="42" height="42">
-      <span>Beav</span>
-    </footer>
+  <main class="page" id="app">
+    <noscript><p style="padding:24px 0">这个脚本页需要开启 JavaScript 才能显示。脚本内容保存在本文件的 video-script-data 数据块里。</p></noscript>
   </main>
 
-  <div id="shooting-poster-modal" class="shooting-poster-modal" hidden role="dialog" aria-modal="true" aria-labelledby="shooting-poster-title">
-    <section class="shooting-poster-panel">
-      <header class="shooting-poster-head">
-        <h2 id="shooting-poster-title">拍摄执行图</h2>
-        <div class="shooting-poster-actions">
-          <button id="save-shooting-poster" class="save-poster" type="button" disabled>保存 PNG</button>
-          <button id="close-shooting-poster" type="button" aria-label="关闭拍摄执行图">关闭</button>
+  <div class="overlay prompter" id="prompter" hidden role="dialog" aria-label="提词器">
+    <div class="prompter-scroll" id="prompter-scroll"></div>
+    <div class="guide" aria-hidden="true"></div>
+    <div class="prompter-bar">
+      <button type="button" data-p="play">开始</button>
+      <button type="button" data-p="slower" aria-label="慢一点">−</button>
+      <span class="speed" id="prompter-speed">1.0×</span>
+      <button type="button" data-p="faster" aria-label="快一点">+</button>
+      <button type="button" data-p="mirror">镜像</button>
+      <button type="button" data-p="close">关闭</button>
+    </div>
+  </div>
+
+  <div class="overlay modal" id="poster-modal" hidden role="dialog" aria-modal="true" aria-labelledby="poster-title">
+    <section class="sheet">
+      <header>
+        <h2 id="poster-title">拍摄单</h2>
+        <div class="actions">
+          <button class="btn" type="button" id="poster-save" disabled>保存图片</button>
+          <button class="btn quiet" type="button" id="poster-close">关闭</button>
         </div>
       </header>
-      <div class="shooting-poster-body">
-        <img id="shooting-poster-preview" hidden alt="脚本的简化拍摄执行图，可长按保存">
-        <p id="shooting-poster-status" class="shooting-poster-status" role="status" aria-live="polite">正在生成</p>
+      <div class="body">
+        <img id="poster-img" alt="拍摄单图片，手机上可长按保存" hidden>
+        <p class="hint" id="poster-status">正在生成…</p>
       </div>
     </section>
   </div>
-  <canvas id="shooting-poster-canvas" width="1200" height="1600" aria-hidden="true"></canvas>
+  <canvas id="poster" aria-hidden="true"></canvas>
 
   <script>
-    (() => {
-      const storageKey = `video-work-order:${document.body.dataset.packageId || document.title}`;
-      const boxes = [...document.querySelectorAll('[data-task-row] .task-check')];
-      const unfinished = document.querySelector('[data-action="unfinished"]');
-      const posterTrigger = document.querySelector('[data-action="shooting-poster"]');
-      const posterModal = document.getElementById('shooting-poster-modal');
-      const posterCanvas = document.getElementById('shooting-poster-canvas');
-      const posterPreview = document.getElementById('shooting-poster-preview');
-      const posterStatus = document.getElementById('shooting-poster-status');
-      const posterSave = document.getElementById('save-shooting-poster');
-      const posterClose = document.getElementById('close-shooting-poster');
-      const posterFontFamily = '-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif';
-      const posterColors = {
-        ink: '#3b332f', muted: '#877a70', line: '#e7d8c8', paper: '#fffaf4',
-        orange: '#cf8a62', orangeDark: '#a7623d', orangeSoft: '#f8e9dd',
-        sage: '#79a99d', sageDark: '#557e74', sageSoft: '#e8f1ec',
-        blue: '#537f8f', blueSoft: '#e7f0f1', danger: '#b95043'
-      };
-      let posterBlob = null;
-      let posterObjectUrl = '';
+  (() => {
+    'use strict';
+    const BEAV_ICON = 'data:image/png;base64,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';
+    const raw = document.getElementById('video-script-data').textContent;
+    let D;
+    try { D = JSON.parse(raw); } catch (err) {
+      document.getElementById('app').innerHTML = '<div class="notice issues"><b>数据错误</b><span>脚本数据不是合法 JSON：' + String(err.message).replace(/</g, '&lt;') + '</span></div>';
+      window.videoScriptCheck = ['JSON 解析失败：' + err.message];
+      return;
+    }
 
-      const cleanText = (node) => String(node?.textContent || '').replace(/\s+/g, ' ').trim();
-      const withoutLabel = (value) => String(value || '').replace(/^[^：]{1,12}：/, '').trim();
-      const metricValue = (label) => {
-        const metric = [...document.querySelectorAll('.metric')].find((item) => cleanText(item.querySelector('span')) === label);
-        return cleanText(metric?.querySelector('strong')) || '—';
-      };
+    const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const fmt = (s) => { s = Math.max(0, Math.round(Number(s) || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+    const BIG = new Set(['12', '3', '6', '9']);
+    const script = Array.isArray(D.script) ? D.script : [];
+    const shots = Array.isArray(D.shots) ? D.shots : [];
+    const clock = Array.isArray(D.clock) ? D.clock : [];
+    const runtime = Number(D.runtimeSeconds) || (script.length ? Number(script[script.length - 1].end) : 0);
+    const shotById = new Map(shots.map((s) => [s.id, s]));
+    const typeName = { A: '口播', B: '画面', screen: '录屏', audio: '录音', asset: '已有素材' };
+    const priName = { must: '必拍', should: '建议拍', optional: '可选' };
+    const idClass = (id) => { const s = shotById.get(id); return s ? (s.type === 'A' ? 'a' : s.type === 'screen' ? 'screen' : '') : ''; };
+    const bIds = (row) => (Array.isArray(row.b) ? row.b : row.b ? [row.b] : []).filter(Boolean);
+    const hkTags = (v) => String(v || '').split(/[+＋\s/、,]+/).filter(Boolean).map((x) => {
+      const k = /^rh/i.test(x) ? 'Rh' : x.toUpperCase().slice(0, 1);
+      return '<i class="' + esc(k) + '">' + esc(k) + '</i>';
+    }).join('');
 
-      const posterData = () => {
-        const hkrr = [...document.querySelectorAll('#rhythm .hkrr-item')].map((item) => {
-          const paragraphs = [...item.querySelectorAll('p')].map(cleanText);
-          const key = item.dataset.element || '';
-          const labels = {
-            happiness: ['H', '快乐'], knowledge: ['K', '知识'], resonance: ['R', '共鸣'], rhythm: ['Rh', '节奏']
-          };
-          const [mark, label] = labels[key] || ['·', cleanText(item.querySelector('h3'))];
-          return {
-            key, mark, label,
-            effect: withoutLabel(paragraphs[0]),
-            design: withoutLabel(paragraphs[1])
-          };
-        });
-        const beats = [...document.querySelectorAll('.rhythm-point')].map((item) => {
-          const hkrr = cleanText(item.querySelector('.rhythm-hkrr'));
-          const label = cleanText(item.querySelector('.rhythm-label'));
-          return {
-            mark: cleanText(item.querySelector('.rhythm-mark')) || '—',
-            time: cleanText(item.querySelector('time')) || '—',
-            label: [hkrr, label].filter(Boolean).join(' · ') || '—',
-            big: item.classList.contains('big'),
-            finish: item.classList.contains('finish')
-          };
-        });
-        const shots = [...document.querySelectorAll('[data-task-row][data-phase="capture"]')].map((row) => {
-          const meta = row.querySelector('[data-shot-meta]');
-          const content = row.querySelector('[data-shot-content]');
-          const direction = row.querySelector('[data-shot-direction]');
-          const output = row.querySelector('[data-shot-output]');
-          const tags = [...(meta?.querySelectorAll('.tag') || [])].map(cleanText);
-          const outputLines = [...(output?.querySelectorAll('.output-line') || [])].map(cleanText);
-          return {
-            id: cleanText(meta?.querySelector('.shot-id')) || '—',
-            type: tags[0] || '素材',
-            priority: tags[1] || '',
-            content: cleanText(content?.querySelector('strong')) || cleanText(content),
-            scene: cleanText(content?.querySelector('.subline')),
-            action: [...(direction?.querySelectorAll('.instruction-line') || [])].map(cleanText).join(' '),
-            framing: cleanText(direction?.querySelector('.subline')),
-            duration: cleanText(direction?.querySelector('.subline')),
-            file: withoutLabel(outputLines[0]),
-            privacy: withoutLabel(outputLines[1]),
-            acceptance: withoutLabel(outputLines[2]),
-            done: Boolean(row.querySelector('.task-check')?.checked)
-          };
-        });
-        return {
-          title: cleanText(document.querySelector('#summary h1')) || '视频拍摄执行图',
-          promise: cleanText(document.querySelector('#summary .promise')) || '—',
-          angle: cleanText(document.querySelector('[data-poster-angle]')),
-          duration: metricValue('目标时长'),
-          platform: metricValue('发布平台'),
-          captureProgress: metricValue('拍摄进度'),
-          hkrr, beats, shots
-        };
-      };
+    /* ---------- checks ---------- */
+    const issues = [];
+    if (/\{\{[A-Z0-9_]+\}\}/.test(raw)) issues.push('还有没替换的 {{占位符}}');
+    if (!D.title) issues.push('缺少标题 title');
+    if (!script.length) issues.push('逐字稿 script 是空的');
+    const used = new Set();
+    script.forEach((row, i) => {
+      [row.a, ...bIds(row)].filter(Boolean).forEach((id) => { used.add(id); if (!shotById.has(id)) issues.push(row.id + ' 引用的镜头 ' + id + ' 不在拍摄清单里'); });
+      if (i > 0 && Math.abs(Number(row.start) - Number(script[i - 1].end)) > 0.5) issues.push(row.id + ' 的开始时间和上一段结束时间没接上');
+      if (Number(row.end) <= Number(row.start)) issues.push(row.id + ' 的结束时间不晚于开始时间');
+    });
+    if (script.length && Math.abs(Number(script[script.length - 1].end) - runtime) > 0.5) issues.push('最后一段结束在 ' + fmt(script[script.length - 1].end) + '，和总时长 ' + fmt(runtime) + ' 对不上');
+    shots.forEach((s) => { if (s.priority === 'must' && !used.has(s.id) && !['audio', 'asset'].includes(s.type)) issues.push('必拍镜头 ' + s.id + ' 没有在逐字稿里用到'); });
+    if (new Set(shots.map((s) => s.id)).size !== shots.length) issues.push('拍摄清单里有重复的镜头 ID');
+    if (clock.length !== 12) issues.push('12 点时钟应有 12 个点，现在是 ' + clock.length + ' 个');
+    window.videoScriptCheck = issues;
 
-      const setPosterFont = (ctx, size, weight = 500) => {
-        ctx.font = `${weight} ${size}px ${posterFontFamily}`;
-      };
+    /* ---------- state ---------- */
+    const KEY = 'beav-video-script:' + (D.id || D.title || location.pathname);
+    let state = { done: {}, tab: 'script', todo: false };
+    try { state = Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (_) {}
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) {} };
 
-      const wrapPosterText = (ctx, value, maxWidth, maxLines = Infinity) => {
-        const chars = [...(String(value || '').replace(/\s+/g, ' ').trim() || '—')];
-        const lines = [];
-        let line = '';
-        chars.forEach((char) => {
-          const next = line + char;
-          if (line && ctx.measureText(next).width > maxWidth) {
-            lines.push(line);
-            line = char;
-          } else {
-            line = next;
-          }
-        });
-        if (line) lines.push(line);
-        if (lines.length <= maxLines) return lines;
-        const visible = lines.slice(0, maxLines);
-        let last = visible[visible.length - 1];
-        while (last && ctx.measureText(`${last}…`).width > maxWidth) last = last.slice(0, -1);
-        visible[visible.length - 1] = `${last}…`;
-        return visible;
-      };
+    /* ---------- render ---------- */
+    document.title = (D.title || '视频脚本') + ' · 视频脚本';
+    const hk = D.hkrr || {};
+    const total = ['H', 'K', 'R', 'Rh'].reduce((n, k) => n + (Number(hk[k]?.score) || 0), 0);
+    const voice = D.voice || {};
+    const hookRows = script.filter((r, i) => i === 0 || Number(r.start) < 3);
+    const icon = BEAV_ICON.startsWith('data:') ? '<img src="' + BEAV_ICON + '" alt="">' : '';
 
-      const textLines = (ctx, value, maxWidth, size, weight = 500, maxLines = Infinity) => {
-        setPosterFont(ctx, size, weight);
-        return wrapPosterText(ctx, value, maxWidth, maxLines);
-      };
+    const head = `
+      <header>
+        <div class="brand">${icon}<span>视频脚本 · ${esc(D.platform || '')}</span></div>
+        <h1>${esc(D.title)}</h1>
+        ${D.promise ? `<p class="promise">${esc(D.promise)}</p>` : ''}
+        <div class="chips">
+          <span class="chip num">时长 ${fmt(runtime)}</span>
+          <span class="chip num">${script.length} 段</span>
+          <span class="chip num">${shots.length} 个镜头</span>
+          <span class="chip num ${total >= 15 ? '' : 'warn'}">HKRR ${total}/20</span>
+          ${voice.label ? `<span class="chip ${voice.status === 'verified' ? 'good' : 'warn'}">${esc(voice.label)}</span>` : ''}
+        </div>
 
-      const drawPosterLines = (ctx, lines, x, y, lineHeight, color, align = 'left') => {
-        ctx.fillStyle = color;
-        ctx.textAlign = align;
-        ctx.textBaseline = 'alphabetic';
-        lines.forEach((line, index) => ctx.fillText(line, x, y + index * lineHeight));
-        return y + lines.length * lineHeight;
-      };
+      </header>
+      ${D.example ? `<div class="notice"><b>示例</b><span>这是模板自带的示例数据，生成正式脚本时要整体替换。</span></div>` : ''}
+      ${issues.length ? `<div class="notice issues"><b>数据检查</b><div>${issues.length} 处需要修<ul>${issues.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>` : ''}
+      ${D.fixFirst ? `<div class="notice"><b>开拍前先改</b><span>${esc(D.fixFirst)}</span></div>` : ''}
+`;
 
-      const roundedPosterRect = (ctx, x, y, width, height, radius, fill, stroke = '') => {
-        const r = Math.min(radius, width / 2, height / 2);
-        ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.arcTo(x + width, y, x + width, y + height, r);
-        ctx.arcTo(x + width, y + height, x, y + height, r);
-        ctx.arcTo(x, y + height, x, y, r);
-        ctx.arcTo(x, y, x + width, y, r);
-        ctx.closePath();
-        ctx.fillStyle = fill;
-        ctx.fill();
-        if (stroke) {
-          ctx.strokeStyle = stroke;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      };
+    const hookCard = `${hookRows.length ? `<section class="hook" aria-label="开头 3 秒">
+        <div class="hook-head">开头 3 秒<span class="num">${fmt(hookRows[0].start)}–${fmt(hookRows[hookRows.length - 1].end)}</span></div>
+        <div class="hook-row"><b>说</b><span class="say">${esc(hookRows.map((r) => r.line).join(''))}</span></div>
+        <div class="hook-row"><b>看</b><span>${esc(hookRows.map((r) => r.picture).filter(Boolean).join('；') || '主机位口播')}</span></div>
+        ${hookRows.some((r) => r.text) ? `<div class="hook-row"><b>字</b><span>${esc(hookRows.map((r) => r.text).filter(Boolean).join(' / '))}</span></div>` : ''}
+      </section>` : ''}`;
+    const briefCard = `${D.core ? `<dl class="card brief">
+          ${D.core.point ? `<div><dt>核心</dt><dd>${esc(D.core.point)}</dd></div>` : ''}
+          ${D.core.tension ? `<div><dt>观众卡点</dt><dd>${esc(D.core.tension)}</dd></div>` : ''}
+          ${D.core.proof ? `<div><dt>靠什么证明</dt><dd>${esc(D.core.proof)}</dd></div>` : ''}
+        </dl>` : ''}`;
+    const beatRow = (r) => {
+      const ids = [r.a, ...bIds(r)].filter(Boolean);
+      return `<article class="beat" id="beat-${esc(r.id)}" data-key="edit:${esc(r.id)}">
+        <div><div class="t num">${fmt(r.start)}</div>${r.clock ? `<span class="mark ${BIG.has(String(r.clock)) ? 'big' : ''}" title="时钟 ${esc(r.clock)} 点">${esc(r.clock)}</span>` : ''}</div>
+        <div>
+          <p class="line">${esc(r.line)}</p>
+          ${r.delivery ? `<p class="delivery">${esc(r.delivery)}</p>` : ''}
+          <dl class="meta">
+            <div><dt>画面</dt><dd style="margin:0"><span class="ids">${ids.map((id) => `<button type="button" class="id ${idClass(id)}" data-goto="${esc(id)}">${esc(id)}</button>`).join('')}</span>${esc(r.picture || '')}${r.hkrr ? `<span class="hk">${hkTags(r.hkrr)}</span>` : ''}</dd></div>
+            ${r.text ? `<div><dt>花字</dt><dd style="margin:0">${esc(r.text)}</dd></div>` : ''}
+            ${r.cue ? `<div><dt>剪辑</dt><dd style="margin:0">${esc(r.cue)}</dd></div>` : ''}
+          </dl>
+        </div>
+        <input class="check" type="checkbox" aria-label="${esc(r.id)} 剪完" title="剪完勾一下">
+      </article>`;
+    };
 
-      const drawPosterSectionTitle = (ctx, title, detail, x, y, width) => {
-        ctx.fillStyle = posterColors.orange;
-        ctx.fillRect(x, y - 25, 7, 32);
-        setPosterFont(ctx, 32, 800);
-        ctx.fillStyle = posterColors.ink;
-        ctx.textAlign = 'left';
-        ctx.fillText(title, x + 20, y);
-        if (detail) {
-          setPosterFont(ctx, 19, 600);
-          ctx.fillStyle = posterColors.muted;
-          ctx.textAlign = 'right';
-          ctx.fillText(detail, x + width, y - 2);
-        }
-      };
+    const shotCard = (s) => {
+      const rowsA = script.filter((r) => r.a === s.id);
+      const rowsUse = script.filter((r) => r.a === s.id || bIds(r).includes(s.id));
+      const steps = [['起', s.start], ['拍', s.action], ['止', s.end]].filter((x) => x[1]);
+      const small = [s.where, s.framing, s.takes].filter(Boolean).map(esc).join(' · ');
+      return `<article class="card shot" id="shot-${esc(s.id)}" data-key="shot:${esc(s.id)}">
+        <input class="check" type="checkbox" aria-label="${esc(s.id)} 拍完">
+        <div>
+          <div class="shot-top"><span class="id ${idClass(s.id)}">${esc(s.id)}</span><h3>${esc(s.what)}</h3><span class="pri ${s.priority === 'must' ? 'must' : ''}">${esc(priName[s.priority] || '')}</span></div>
+          ${steps.length ? `<div class="steps">${steps.map((x) => `<span><b>${x[0]}</b>${esc(x[1])}</span>`).join('<span class="arrow">→</span>')}</div>` : ''}
+          ${small ? `<p class="small">${small}</p>` : ''}
+          ${s.accept ? `<p class="accept"><b>合格</b>${esc(s.accept)}</p>` : ''}
+          <p class="small">${[!rowsA.length && rowsUse.length ? '用在 ' + rowsUse.map((r) => fmt(r.start)).join('、') : '', s.file ? `<code>${esc(s.file)}</code>` : '', esc(s.privacy || '')].filter(Boolean).join(' · ')}</p>
+          ${rowsA.length ? `<details class="lines"><summary>这个机位要说 ${rowsA.length} 段</summary><ol>${rowsA.map((r) => `<li><span class="num">${fmt(r.start)}</span>${esc(r.line)}</li>`).join('')}</ol></details>` : ''}
+        </div>
+      </article>`;
+    };
 
-      const drawPosterPill = (ctx, text, x, y, fill, color, maxWidth = 300) => {
-        setPosterFont(ctx, 18, 750);
-        const width = Math.min(maxWidth, Math.ceil(ctx.measureText(text).width) + 28);
-        roundedPosterRect(ctx, x, y, width, 36, 8, fill);
-        ctx.fillStyle = color;
-        ctx.textAlign = 'left';
-        ctx.fillText(text, x + 14, y + 25);
-        return width;
-      };
+    const aShots = shots.filter((s) => s.type === 'A');
+    const otherShots = shots.filter((s) => s.type !== 'A');
 
-      const shotAccent = (type) => {
-        const value = String(type || '').toLowerCase();
-        if (value.includes('a-roll')) return posterColors.orange;
-        if (value.includes('audio') || value.includes('音频')) return posterColors.sage;
-        if (value.includes('existing') || value.includes('已有')) return '#9a8c82';
-        return posterColors.blue;
-      };
+    const hkCard = (k, name, en, color) => {
+      const v = hk[k] || {};
+      const sc = Math.max(0, Math.min(5, Number(v.score) || 0));
+      return `<article class="card hk-card">
+        <header><span class="letter" style="background:var(--${color}-soft);color:var(--${color})">${k}</span><h3>${name}<small>${en}</small></h3>
+        <span class="dots" style="color:var(--${color})">${[1, 2, 3, 4, 5].map((n) => `<i class="${n <= sc ? 'on' : ''}"></i>`).join('')}<span style="color:var(--ink-3);margin-left:4px">${sc}/5</span></span></header>
+        ${v.effect ? `<p>${esc(v.effect)}</p>` : ''}${v.evidence ? `<p>${esc(v.evidence)}</p>` : ''}
+      </article>`;
+    };
 
-      const measurePoster = (ctx, data) => {
-        const width = 1200;
-        const padding = 64;
-        const contentWidth = width - padding * 2;
-        const titleLines = textLines(ctx, data.title, contentWidth, 56, 850, 2);
-        const promiseLines = textLines(ctx, data.promise, contentWidth, 28, 550, 4);
-        const angleLines = data.angle ? textLines(ctx, `选定角度：${data.angle}`, contentWidth, 21, 650, 2) : [];
-        const headerHeight = 54 + titleLines.length * 68 + 18 + promiseLines.length * 42 + (angleLines.length ? 18 + angleLines.length * 31 : 0) + 92;
-
-        const cardGap = 16;
-        const hkrrCardWidth = (contentWidth - cardGap) / 2;
-        const hkrrModels = data.hkrr.map((item) => {
-          const detail = [item.effect, item.design].filter(Boolean).join(' · ') || '—';
-          const lines = textLines(ctx, detail, hkrrCardWidth - 92, 20, 550, 4);
-          return { ...item, lines, height: Math.max(126, 62 + lines.length * 30) };
-        });
-        const hkrrRows = [];
-        for (let index = 0; index < hkrrModels.length; index += 2) {
-          hkrrRows.push(Math.max(hkrrModels[index]?.height || 0, hkrrModels[index + 1]?.height || 0));
-        }
-        const hkrrHeight = 64 + hkrrRows.reduce((sum, value) => sum + value, 0) + Math.max(0, hkrrRows.length - 1) * cardGap;
-
-        const shotModels = data.shots.map((shot) => {
-          const contentLines = textLines(ctx, shot.content, contentWidth - 52, 27, 800, 2);
-          const context = [shot.scene, shot.framing].filter(Boolean).join(' · ');
-          const contextLines = textLines(ctx, context || '—', contentWidth - 52, 18, 550, 3);
-          const actionLines = textLines(ctx, `拍摄：${shot.action || '—'}`, contentWidth - 52, 21, 600);
-          const acceptanceLines = textLines(ctx, `验收：${shot.acceptance || '—'}`, contentWidth - 52, 20, 600);
-          const fileInfo = [shot.file, shot.privacy].filter(Boolean).join(' · ');
-          const fileLines = textLines(ctx, `文件 / 隐私：${fileInfo || '—'}`, contentWidth - 52, 18, 550, 3);
-          const height = 78 + contentLines.length * 36 + contextLines.length * 27 + actionLines.length * 31 + acceptanceLines.length * 30 + fileLines.length * 27 + 52;
-          return { ...shot, contentLines, contextLines, actionLines, acceptanceLines, fileLines, height };
-        });
-        const shotsHeight = 70 + (shotModels.length
-          ? shotModels.reduce((sum, item) => sum + item.height, 0) + Math.max(0, shotModels.length - 1) * 14
-          : 120);
-        const clockHeight = 940;
-        const totalHeight = padding + headerHeight + 34 + hkrrHeight + 36 + clockHeight + 38 + shotsHeight + 150;
-        return { width, padding, contentWidth, titleLines, promiseLines, angleLines, headerHeight, hkrrModels, hkrrRows, hkrrHeight, shotModels, shotsHeight, clockHeight, totalHeight };
-      };
-
-      const drawPosterClock = (ctx, data, layout, y) => {
-        drawPosterSectionTitle(ctx, '12 点节拍时钟', '点位 / 时间 / HKRR / 刺激均沿圆周展示', layout.padding, y + 32, layout.contentWidth);
-        const panelY = y + 58;
-        const panelHeight = 860;
-        roundedPosterRect(ctx, layout.padding, panelY, layout.contentWidth, panelHeight, 8, 'rgba(255, 253, 248, 0.82)', posterColors.line);
-
-        const centerX = layout.padding + layout.contentWidth / 2;
-        const centerY = panelY + 430;
-        const radius = 230;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        ctx.strokeStyle = '#dfd0c0';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(centerX - radius + 28, centerY);
-        ctx.lineTo(centerX + radius - 28, centerY);
-        ctx.moveTo(centerX, centerY - radius + 28);
-        ctx.lineTo(centerX, centerY + radius - 28);
-        ctx.strokeStyle = '#eadfce';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        const cardWidth = 206;
-        const cardHeight = 82;
-        const sideLeft = layout.padding + 24;
-        const sideRight = layout.padding + layout.contentWidth - cardWidth - 24;
-        const centerCardLeft = centerX - cardWidth / 2;
-        const cardLayouts = [
-          { x: centerCardLeft, y: panelY + 38, lane: 'top' },
-          { x: sideRight, y: panelY + 190, lane: 'right' },
-          { x: sideRight, y: panelY + 274, lane: 'right' },
-          { x: sideRight, y: panelY + 389, lane: 'right' },
-          { x: sideRight, y: panelY + 504, lane: 'right' },
-          { x: sideRight, y: panelY + 588, lane: 'right' },
-          { x: centerCardLeft, y: panelY + 740, lane: 'bottom' },
-          { x: sideLeft, y: panelY + 588, lane: 'left' },
-          { x: sideLeft, y: panelY + 504, lane: 'left' },
-          { x: sideLeft, y: panelY + 389, lane: 'left' },
-          { x: sideLeft, y: panelY + 274, lane: 'left' },
-          { x: sideLeft, y: panelY + 190, lane: 'left' }
-        ];
-        const regularBeats = data.beats.filter((beat) => !beat.finish).slice(0, 12);
-        regularBeats.forEach((beat, index) => {
-          const angle = (index / 12) * Math.PI * 2 - Math.PI / 2;
-          const pointX = centerX + Math.cos(angle) * radius;
-          const pointY = centerY + Math.sin(angle) * radius;
-          const card = cardLayouts[index];
-          const targetX = card.lane === 'right' ? card.x : card.lane === 'left' ? card.x + cardWidth : card.x + cardWidth / 2;
-          const targetY = card.lane === 'top' ? card.y + cardHeight : card.lane === 'bottom' ? card.y : card.y + cardHeight / 2;
-
-          ctx.beginPath();
-          ctx.moveTo(pointX, pointY);
-          ctx.lineTo(targetX, targetY);
-          ctx.strokeStyle = beat.big ? '#d79a73' : '#d9cdbf';
-          ctx.lineWidth = beat.big ? 3 : 2;
-          ctx.stroke();
-
-          roundedPosterRect(ctx, card.x, card.y, cardWidth, cardHeight, 6, beat.big ? '#f8e9dd' : 'rgba(255, 253, 248, 0.96)', beat.big ? '#d79a73' : '#dfd2c4');
-          setPosterFont(ctx, 16, 850);
-          ctx.fillStyle = posterColors.ink;
-          ctx.textAlign = 'left';
-          ctx.fillText(`${beat.mark} · ${beat.time}`, card.x + 12, card.y + 23);
-          setPosterFont(ctx, 13, 600);
-          const labelLines = wrapPosterText(ctx, beat.label || '—', cardWidth - 24, 3);
-          drawPosterLines(ctx, labelLines, card.x + 12, card.y + 44, 16, beat.big ? posterColors.orangeDark : posterColors.muted);
-
-          ctx.beginPath();
-          ctx.arc(pointX, pointY, beat.big ? 16 : 10, 0, Math.PI * 2);
-          ctx.fillStyle = beat.big ? posterColors.orange : '#cbbdaf';
-          ctx.fill();
-          ctx.lineWidth = 4;
-          ctx.strokeStyle = '#fffaf4';
-          ctx.stroke();
-        });
-
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, 96, 0, Math.PI * 2);
-        ctx.fillStyle = '#fff5e3';
-        ctx.fill();
-        ctx.strokeStyle = '#e8d8bc';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        const finish = data.beats.find((beat) => beat.finish) || { time: data.duration, label: '完成拍摄' };
-        setPosterFont(ctx, 19, 800);
-        ctx.fillStyle = posterColors.orangeDark;
-        ctx.textAlign = 'center';
-        ctx.fillText('Finish', centerX, centerY - 30);
-        setPosterFont(ctx, 25, 850);
-        ctx.fillStyle = posterColors.ink;
-        ctx.fillText(finish.time || data.duration, centerX, centerY + 4);
-        setPosterFont(ctx, 13, 650);
-        const finishLines = wrapPosterText(ctx, finish.label || '—', 160, 4);
-        drawPosterLines(ctx, finishLines, centerX, centerY + 29, 17, posterColors.muted, 'center');
-        return y + layout.clockHeight;
-      };
-
-      const drawShootingPoster = async () => {
-        if (document.fonts?.ready) await document.fonts.ready;
-        const data = posterData();
-        posterCanvas.width = 1200;
-        posterCanvas.height = 1;
-        let ctx = posterCanvas.getContext('2d');
-        const layout = measurePoster(ctx, data);
-        posterCanvas.width = layout.width;
-        posterCanvas.height = Math.ceil(layout.totalHeight);
-        ctx = posterCanvas.getContext('2d');
-
-        const background = ctx.createLinearGradient(0, 0, 0, layout.totalHeight);
-        background.addColorStop(0, '#f6efe6');
-        background.addColorStop(0.56, '#efe6da');
-        background.addColorStop(1, '#d7e7e1');
-        ctx.fillStyle = background;
-        ctx.fillRect(0, 0, layout.width, layout.totalHeight);
-        ctx.fillStyle = posterColors.orange;
-        ctx.fillRect(0, 0, layout.width, 10);
-
-        let y = layout.padding;
-        setPosterFont(ctx, 20, 850);
-        ctx.fillStyle = posterColors.orangeDark;
-        ctx.textAlign = 'left';
-        ctx.fillText('BEAV · VIDEO SHOOTING SHEET', layout.padding, y + 20);
-        y += 68;
-        setPosterFont(ctx, 56, 850);
-        y = drawPosterLines(ctx, layout.titleLines, layout.padding, y, 68, posterColors.ink);
-        y += 16;
-        setPosterFont(ctx, 28, 550);
-        y = drawPosterLines(ctx, layout.promiseLines, layout.padding, y, 42, posterColors.muted);
-        if (layout.angleLines.length) {
-          y += 14;
-          setPosterFont(ctx, 21, 650);
-          y = drawPosterLines(ctx, layout.angleLines, layout.padding, y, 31, posterColors.sageDark);
-        }
-        y += 24;
-        const meta = [
-          ['目标时长', data.duration], ['发布平台', data.platform], ['拍摄进度', data.captureProgress]
-        ];
-        const metaGap = 14;
-        const metaWidth = (layout.contentWidth - metaGap * 2) / 3;
-        meta.forEach(([label, value], index) => {
-          const x = layout.padding + index * (metaWidth + metaGap);
-          roundedPosterRect(ctx, x, y, metaWidth, 64, 8, 'rgba(255, 253, 248, 0.78)', posterColors.line);
-          setPosterFont(ctx, 15, 700);
-          ctx.fillStyle = posterColors.muted;
-          ctx.fillText(label, x + 18, y + 23);
-          setPosterFont(ctx, 22, 800);
-          ctx.fillStyle = posterColors.ink;
-          const valueLines = wrapPosterText(ctx, value, metaWidth - 36, 1);
-          ctx.fillText(valueLines[0], x + 18, y + 50);
-        });
-        y += 98;
-
-        drawPosterSectionTitle(ctx, 'HKRR 执行', '', layout.padding, y + 32, layout.contentWidth);
-        y += 62;
-        const hkrrGap = 16;
-        const hkrrWidth = (layout.contentWidth - hkrrGap) / 2;
-        const hkrrColors = { happiness: '#e9b66f', knowledge: posterColors.blue, resonance: '#b87865', rhythm: posterColors.sageDark };
-        for (let index = 0; index < layout.hkrrModels.length; index += 2) {
-          const rowHeight = Math.max(layout.hkrrModels[index]?.height || 0, layout.hkrrModels[index + 1]?.height || 0);
-          [layout.hkrrModels[index], layout.hkrrModels[index + 1]].forEach((item, column) => {
-            if (!item) return;
-            const x = layout.padding + column * (hkrrWidth + hkrrGap);
-            roundedPosterRect(ctx, x, y, hkrrWidth, rowHeight, 8, 'rgba(255, 253, 248, 0.8)', posterColors.line);
-            ctx.fillStyle = hkrrColors[item.key] || posterColors.orange;
-            ctx.fillRect(x, y, 7, rowHeight);
-            setPosterFont(ctx, 25, 850);
-            ctx.fillStyle = hkrrColors[item.key] || posterColors.orange;
-            ctx.fillText(item.mark, x + 24, y + 38);
-            setPosterFont(ctx, 21, 800);
-            ctx.fillStyle = posterColors.ink;
-            ctx.fillText(item.label, x + 68, y + 37);
-            setPosterFont(ctx, 20, 550);
-            drawPosterLines(ctx, item.lines, x + 24, y + 77, 30, posterColors.muted);
-          });
-          y += rowHeight + hkrrGap;
-        }
-        y += 20;
-        y = drawPosterClock(ctx, data, layout, y);
-        y += 24;
-
-        const doneShots = data.shots.filter((shot) => shot.done).length;
-        drawPosterSectionTitle(ctx, '拍摄清单', `${doneShots} / ${data.shots.length} 完成`, layout.padding, y + 32, layout.contentWidth);
-        y += 68;
-        if (!layout.shotModels.length) {
-          roundedPosterRect(ctx, layout.padding, y, layout.contentWidth, 100, 8, 'rgba(255, 253, 248, 0.8)', posterColors.line);
-          setPosterFont(ctx, 22, 650);
-          ctx.fillStyle = posterColors.muted;
-          ctx.fillText('暂无拍摄任务', layout.padding + 24, y + 59);
-          y += 114;
-        } else {
-          layout.shotModels.forEach((shot) => {
-            const accent = shotAccent(shot.type);
-            roundedPosterRect(ctx, layout.padding, y, layout.contentWidth, shot.height, 8, shot.done ? 'rgba(232, 241, 236, 0.9)' : 'rgba(255, 253, 248, 0.84)', posterColors.line);
-            ctx.fillStyle = accent;
-            ctx.fillRect(layout.padding, y, 7, shot.height);
-
-            const checkX = layout.padding + 30;
-            const checkY = y + 31;
-            ctx.beginPath();
-            ctx.arc(checkX, checkY, 13, 0, Math.PI * 2);
-            ctx.fillStyle = shot.done ? posterColors.sage : '#fffdf8';
-            ctx.fill();
-            ctx.strokeStyle = shot.done ? posterColors.sage : '#b9aa9d';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            if (shot.done) {
-              ctx.beginPath();
-              ctx.moveTo(checkX - 6, checkY);
-              ctx.lineTo(checkX - 1, checkY + 5);
-              ctx.lineTo(checkX + 7, checkY - 6);
-              ctx.strokeStyle = '#fff';
-              ctx.lineWidth = 3;
-              ctx.stroke();
-            }
-
-            setPosterFont(ctx, 23, 850);
-            ctx.fillStyle = shot.done ? posterColors.sageDark : posterColors.ink;
-            ctx.fillText(shot.id, layout.padding + 54, y + 38);
-            let pillX = layout.padding + 150;
-            pillX += drawPosterPill(ctx, shot.type, pillX, y + 13, `${accent}20`, accent, 190) + 8;
-            if (shot.priority) drawPosterPill(ctx, shot.priority, pillX, y + 13, posterColors.orangeSoft, posterColors.orangeDark, 160);
-            setPosterFont(ctx, 18, 750);
-            ctx.fillStyle = posterColors.muted;
-            ctx.textAlign = 'right';
-            ctx.fillText(shot.duration || '—', layout.padding + layout.contentWidth - 24, y + 38);
-            ctx.textAlign = 'left';
-
-            let textY = y + 82;
-            setPosterFont(ctx, 27, 800);
-            textY = drawPosterLines(ctx, shot.contentLines, layout.padding + 26, textY, 36, posterColors.ink);
-            textY += 4;
-            setPosterFont(ctx, 18, 550);
-            textY = drawPosterLines(ctx, shot.contextLines, layout.padding + 26, textY, 27, posterColors.muted);
-            textY += 8;
-            setPosterFont(ctx, 21, 600);
-            textY = drawPosterLines(ctx, shot.actionLines, layout.padding + 26, textY, 31, posterColors.ink);
-            textY += 6;
-            setPosterFont(ctx, 20, 600);
-            textY = drawPosterLines(ctx, shot.acceptanceLines, layout.padding + 26, textY, 30, posterColors.sageDark);
-            textY += 5;
-            setPosterFont(ctx, 18, 550);
-            drawPosterLines(ctx, shot.fileLines, layout.padding + 26, textY, 27, posterColors.muted);
-            y += shot.height + 14;
-          });
-        }
-
-        y += 30;
-        ctx.fillStyle = 'rgba(135, 122, 112, 0.32)';
-        ctx.fillRect(layout.padding, y, layout.contentWidth, 2);
-        y += 34;
-        const beavIcon = document.querySelector('.beav-footer img');
-        if (beavIcon) {
-          try { await beavIcon.decode(); } catch { /* The text fallback remains readable. */ }
-          if (beavIcon.complete && beavIcon.naturalWidth) ctx.drawImage(beavIcon, layout.padding, y, 54, 54);
-        }
-        setPosterFont(ctx, 24, 850);
-        ctx.fillStyle = posterColors.ink;
-        ctx.fillText('Beav', layout.padding + 72, y + 27);
-        setPosterFont(ctx, 17, 600);
-        ctx.fillStyle = posterColors.muted;
-        ctx.fillText('拍摄执行图 · 完整脚本与剪辑安排保留在原 HTML', layout.padding + 72, y + 52);
-
-        return new Promise((resolve, reject) => {
-          posterCanvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error('浏览器未能生成 PNG')), 'image/png');
-        });
-      };
-
-      const openPosterModal = () => {
-        posterModal.hidden = false;
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closePosterModal = () => {
-        posterModal.hidden = true;
-        document.body.style.overflow = '';
-      };
-
-      const safePosterFileName = () => {
-        const base = cleanText(document.querySelector('#summary h1')) || 'video-script';
-        return `${base.replace(/[\\/:*?"<>|]/g, '-').slice(0, 64)}-拍摄执行图.png`;
-      };
-
-      const readState = () => {
-        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); }
-        catch { return {}; }
-      };
-
-      const saveState = () => {
-        const state = { unfinished: Boolean(unfinished?.checked) };
-        boxes.forEach((box) => { state[box.id] = Boolean(box.checked); });
-        try { localStorage.setItem(storageKey, JSON.stringify(state)); }
-        catch { /* Progress remains available in the current page session. */ }
-      };
-
-      const updatePhase = (phase, textId, fillId, summaryId) => {
-        const phaseBoxes = boxes.filter((box) => box.closest('[data-phase]')?.dataset.phase === phase);
-        const done = phaseBoxes.filter((box) => box.checked).length;
-        const percent = phaseBoxes.length ? Math.round((done / phaseBoxes.length) * 100) : 0;
-        const value = `${done}/${phaseBoxes.length}`;
-        const text = document.getElementById(textId);
-        const fill = document.getElementById(fillId);
-        const summary = document.getElementById(summaryId);
-        if (text) text.textContent = value;
-        if (fill) fill.style.width = `${percent}%`;
-        if (summary) summary.textContent = value;
-      };
-
-      const update = () => {
-        document.querySelectorAll('[data-task-row]').forEach((row) => {
-          row.classList.toggle('completed', Boolean(row.querySelector('.task-check')?.checked));
-        });
-        updatePhase('capture', 'capture-progress-text', 'capture-progress-fill', 'capture-summary');
-        updatePhase('edit', 'edit-progress-text', 'edit-progress-fill', 'edit-summary');
-      };
-
-      const state = readState();
-      boxes.forEach((box) => {
-        box.checked = Boolean(state[box.id]);
-        box.addEventListener('change', () => { update(); saveState(); });
+    const dial = () => {
+      const c = 150, R = 104;
+      let svg = `<svg class="dial" viewBox="0 0 300 300" role="img" aria-label="12 点刺激时钟"><circle class="ring" cx="${c}" cy="${c}" r="${R}"/><circle class="ring2" cx="${c}" cy="${c}" r="${R - 30}"/>`;
+      clock.forEach((p, i) => {
+        const ang = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        const x = c + R * Math.cos(ang), y = c + R * Math.sin(ang);
+        const tx = c + (R + 30) * Math.cos(ang), ty = c + (R + 30) * Math.sin(ang);
+        const big = BIG.has(String(p.mark));
+        svg += `<circle class="pt ${big ? 'big' : ''}" data-pt="${i}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${big ? 9 : 6}"><title>${esc(p.mark)} · ${esc(p.time)} · ${esc(p.label)}</title></circle>`;
+        svg += `<text x="${tx.toFixed(1)}" y="${(ty - 6).toFixed(1)}">${esc(p.mark)}</text><text class="time" x="${tx.toFixed(1)}" y="${(ty + 7).toFixed(1)}">${esc(p.time)}</text>`;
       });
+      const fin = D.finish || {};
+      svg += `<text class="f1" x="${c}" y="${c - 8}">F</text><text class="f2" x="${c}" y="${c + 16}">${esc(fin.time || fmt(runtime))}</text></svg>`;
+      return svg;
+    };
 
-      if (unfinished) {
-        unfinished.checked = Boolean(state.unfinished);
-        document.body.classList.toggle('unfinished-only', unfinished.checked);
-        unfinished.addEventListener('change', () => {
-          document.body.classList.toggle('unfinished-only', unfinished.checked);
-          saveState();
-        });
-      }
-
-      posterTrigger?.addEventListener('click', async () => {
-        const originalLabel = posterTrigger.textContent;
-        posterTrigger.disabled = true;
-        posterTrigger.textContent = '正在生成';
-        posterSave.disabled = true;
-        posterStatus.textContent = '正在生成拍摄执行图';
-        posterPreview.hidden = true;
-        posterPreview.removeAttribute('src');
-        openPosterModal();
-        try {
-          posterBlob = await drawShootingPoster();
-          if (posterObjectUrl) URL.revokeObjectURL(posterObjectUrl);
-          posterObjectUrl = URL.createObjectURL(posterBlob);
-          posterPreview.src = posterObjectUrl;
-          posterPreview.hidden = false;
-          posterSave.disabled = false;
-          posterStatus.textContent = '点击保存 PNG；移动端也可以长按图片保存';
-        } catch (error) {
-          posterStatus.textContent = `生成失败：${error instanceof Error ? error.message : '未知错误'}`;
-        } finally {
-          posterTrigger.disabled = false;
-          posterTrigger.textContent = originalLabel;
+    const tracks = () => {
+      if (!runtime) return '';
+      const pct = (t) => (Math.max(0, Math.min(runtime, Number(t))) / runtime * 100).toFixed(3) + '%';
+      const a = [], b = [];
+      script.forEach((r) => {
+        const st = `left:${pct(r.start)};width:calc(${pct(r.end)} - ${pct(r.start)})`;
+        if (r.a) {
+          const prev = a[a.length - 1];
+          if (prev && prev.id === r.a && Math.abs(prev.end - r.start) < 0.6) prev.end = r.end; else a.push({ id: r.a, start: r.start, end: r.end });
         }
+        bIds(r).forEach((id) => b.push({ id, start: r.start, end: r.end, cls: idClass(id) }));
       });
+      const seg = (cls) => (x) => `<span class="${cls} ${x.cls || ''}" style="left:${pct(x.start)};width:calc(${pct(x.end)} - ${pct(x.start)})" title="${esc(x.id)} ${fmt(x.start)}–${fmt(x.end)}">${esc(x.id)}</span>`;
+      const ticks = script.filter((r) => r.clock).map((r) => `<span style="left:${pct(r.start)}"><span class="mark ${BIG.has(String(r.clock)) ? 'big' : ''}">${esc(r.clock)}</span></span>`).join('');
+      const marks = [0, 0.25, 0.5, 0.75, 1].map((f) => `<span class="num">${fmt(runtime * f)}</span>`).join('');
+      return `<div class="card track">
+        <div class="ticks" aria-hidden="true">${ticks}</div>
+        <div class="lane-label"><span>A · 口播</span></div><div class="lane">${a.map(seg('seg-a')).join('')}</div>
+        <div class="lane-label"><span>B · 画面 / 录屏</span></div><div class="lane">${b.map(seg('seg-b')).join('')}</div>
+        <div class="axis">${marks}</div>
+      </div>`;
+    };
 
-      posterSave?.addEventListener('click', () => {
-        if (!posterBlob || !posterObjectUrl) return;
-        const link = document.createElement('a');
-        link.href = posterObjectUrl;
-        link.download = safePosterFileName();
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        posterStatus.textContent = 'PNG 已保存';
-      });
+    const qc = D.qc || {};
+    const src = D.sources || {};
+    const kv = (k, v, flag) => v ? `<div><dt>${k}</dt><dd>${flag ? `<b>${esc(flag)}</b>` : ''}${esc(v)}</dd></div>` : '';
 
-      posterClose?.addEventListener('click', closePosterModal);
-      posterModal?.addEventListener('click', (event) => {
-        if (event.target === posterModal) closePosterModal();
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && posterModal && !posterModal.hidden) closePosterModal();
-      });
-      window.addEventListener('beforeunload', () => {
-        if (posterObjectUrl) URL.revokeObjectURL(posterObjectUrl);
-      });
+    document.getElementById('app').innerHTML = `
+      ${head}
+      <nav class="tabs" aria-label="脚本视图">
+        <div class="seg" role="tablist">
+          <button type="button" role="tab" data-tab="script">逐字稿</button>
+          <button type="button" role="tab" data-tab="shoot">拍摄 <span class="count num" id="tab-count"></span></button>
+          <button type="button" role="tab" data-tab="rhythm">节奏</button>
+        </div>
+      </nav>
 
-      document.querySelector('[data-action="print"]')?.addEventListener('click', () => window.print());
-      document.querySelector('[data-action="reset"]')?.addEventListener('click', () => {
-        if (!window.confirm('清空本文件的拍摄与剪辑进度？')) return;
-        boxes.forEach((box) => { box.checked = false; });
-        if (unfinished) unfinished.checked = false;
-        document.body.classList.remove('unfinished-only');
-        update();
-        saveState();
-      });
+      <section class="view" id="view-script" role="tabpanel">
+        <div class="view-head">
+          <p>先出声读一遍，读着别扭就改。右侧圆圈＝这段剪完了。</p>
+          <div class="actions"><button class="btn" type="button" data-act="prompter"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="12" height="9" rx="2"/><path d="M5 6.5h6M5 9h4"/></svg>提词器</button></div>
+        </div>
+        ${hookCard}
+        <div class="card beats">${script.map(beatRow).join('')}</div>
+      </section>
 
-      const rhythmWrap = document.querySelector('.rhythm-wrap');
-      if (rhythmWrap && rhythmWrap.scrollWidth > rhythmWrap.clientWidth) {
-        requestAnimationFrame(() => {
-          rhythmWrap.scrollLeft = (rhythmWrap.scrollWidth - rhythmWrap.clientWidth) / 2;
-        });
-      }
-      update();
-    })();
+      <section class="view" id="view-shoot" role="tabpanel" hidden>
+        <div class="view-head">
+          <div class="progress"><div class="progress-text"><strong id="shoot-text"></strong><span id="shoot-left"></span></div><div class="bar"><i id="shoot-bar"></i></div></div>
+          <div class="actions">
+            <button class="btn" type="button" data-act="todo">只看没拍的</button>
+            <button class="btn" type="button" data-act="poster"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="2" width="10" height="12" rx="2"/><path d="M6 6h4M6 9h4"/></svg>拍摄单图片</button>
+          </div>
+        </div>
+        ${aShots.length ? `<h3 class="group-title">口播 · 按机位一次录完</h3><div class="shots">${aShots.map(shotCard).join('')}</div>` : ''}
+        ${otherShots.length ? `<h3 class="group-title">画面 · 录屏 · 素材</h3><div class="shots">${otherShots.map(shotCard).join('')}</div>` : ''}
+        <div class="view-head" style="margin-top:14px"><span></span><button class="btn quiet" type="button" data-act="reset">清空勾选</button></div>
+      </section>
+
+      <section class="view" id="view-rhythm" role="tabpanel" hidden>
+        ${briefCard}
+        <div class="hkrr">
+          ${hkCard('H', '快乐', 'Happiness', 'h')}${hkCard('K', '知识', 'Knowledge', 'k')}${hkCard('R', '共鸣', 'Resonance', 'r')}${hkCard('Rh', '节奏', 'Rhythm', 'rh')}
+        </div>
+        <p class="total"><b class="num">HKRR ${total} / 20</b>${qc.verdict ? `<span>${esc(qc.verdict)}</span>` : ''}</p>
+
+        <h3 class="section-title">12 点刺激时钟<small>12 / 3 / 6 / 9 是大刺激</small></h3>
+        <div class="card clock">
+          ${dial()}
+          <ol class="points">
+            ${clock.map((p, i) => `<li data-pt="${i}"><span class="mark ${BIG.has(String(p.mark)) ? 'big' : ''}">${esc(p.mark)}</span><time class="num">${esc(p.time)}</time><span class="role">${esc(p.role || '')}</span><span>${esc(p.label)}</span></li>`).join('')}
+            ${D.finish ? `<li class="finish"><span class="mark">F</span><time class="num">${esc(D.finish.time || fmt(runtime))}</time><span class="role">收尾</span><span>${esc(D.finish.label || '')}</span></li>` : ''}
+          </ol>
+        </div>
+
+        <h3 class="section-title">A / B 轨道<small>按时长比例</small></h3>
+        ${tracks()}
+
+        <h3 class="section-title">开拍前检查</h3>
+        <dl class="card qc">
+          ${kv('第一掉点', qc.dropOff?.risk, qc.dropOff?.time)}
+          ${kv('AI 痕迹', qc.aiPattern)}
+          ${kv('卡住拍摄', qc.blockers)}
+          ${kv('作者语气', voice.note, voice.label)}
+        </dl>
+        ${(src.used || src.missing || src.assumptions || src.doNotClaim) ? `<details class="card sources"><summary>资料与边界</summary><dl class="qc" style="padding:0">
+          ${kv('用到的资料', src.used)}${kv('还缺', src.missing)}${kv('假设', src.assumptions)}${kv('不能说', src.doNotClaim)}
+        </dl></details>` : ''}
+      </section>
+
+      <footer class="foot"><span>${icon}Beav · 高留存视频脚本</span><button class="btn quiet" type="button" data-act="print">打印 / 存 PDF</button></footer>`;
+
+    /* ---------- behaviour ---------- */
+    const app = document.getElementById('app');
+    const checks = [...app.querySelectorAll('[data-key] > .check')];
+    const sync = () => {
+      checks.forEach((c) => { const k = c.parentElement.dataset.key; c.checked = !!state.done[k]; c.parentElement.classList.toggle('done', c.checked); });
+      const shotDone = shots.filter((s) => state.done['shot:' + s.id]).length;
+      const mustLeft = shots.filter((s) => s.priority === 'must' && !state.done['shot:' + s.id]).length;
+      app.querySelector('#tab-count').textContent = shotDone + '/' + shots.length;
+      app.querySelector('#shoot-text').textContent = '已拍 ' + shotDone + ' / ' + shots.length;
+      app.querySelector('#shoot-left').textContent = mustLeft ? '必拍还剩 ' + mustLeft : '必拍已拍完';
+      app.querySelector('#shoot-bar').style.width = (shots.length ? shotDone / shots.length * 100 : 0) + '%';
+      document.body.classList.toggle('only-todo', !!state.todo);
+      app.querySelector('[data-act="todo"]').classList.toggle('on', !!state.todo);
+    };
+    checks.forEach((c) => c.addEventListener('change', () => { const k = c.parentElement.dataset.key; if (c.checked) state.done[k] = true; else delete state.done[k]; save(); sync(); }));
+
+    const tabs = [...app.querySelectorAll('[data-tab]')];
+    const show = (name, keepScroll) => {
+      state.tab = name; save();
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+      ['script', 'shoot', 'rhythm'].forEach((n) => { app.querySelector('#view-' + n).hidden = n !== name; });
+      if (!keepScroll) { const nav = app.querySelector('.tabs'); if (window.scrollY > nav.offsetTop) window.scrollTo({ top: nav.offsetTop }); }
+    };
+    tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.tab)));
+    show(['script', 'shoot', 'rhythm'].includes(state.tab) ? state.tab : 'script', true);
+
+    const flash = (el) => { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1200); };
+    app.addEventListener('click', (e) => {
+      const go = e.target.closest('[data-goto]');
+      if (go) { const el = document.getElementById('shot-' + go.dataset.goto); if (el) { if (state.todo && el.classList.contains('done')) { state.todo = false; sync(); } show('shoot', true); el.scrollIntoView({ block: 'center' }); flash(el); } return; }
+      const act = e.target.closest('[data-act]')?.dataset.act;
+      if (act === 'todo') { state.todo = !state.todo; save(); sync(); }
+      if (act === 'reset' && confirm('清空所有拍摄和剪辑勾选？')) { state.done = {}; save(); sync(); }
+      if (act === 'print') window.print();
+      if (act === 'prompter') openPrompter();
+      if (act === 'poster') openPoster();
+    });
+    const pts = [...app.querySelectorAll('[data-pt]')];
+    pts.forEach((el) => {
+      const on = (v) => pts.filter((p) => p.dataset.pt === el.dataset.pt).forEach((p) => p.classList.toggle('on', v));
+      el.addEventListener('mouseenter', () => on(true));
+      el.addEventListener('mouseleave', () => on(false));
+    });
+    sync();
+
+    /* ---------- prompter ---------- */
+    const P = document.getElementById('prompter');
+    const PS = document.getElementById('prompter-scroll');
+    let playing = false, speed = 1, last = 0, acc = 0;
+    PS.innerHTML = script.map((r) => `<p>${esc(r.line)}</p>`).join('');
+    const paras = [...PS.children];
+    const mark = () => {
+      const y = window.innerHeight * 0.4;
+      let best = null, bestD = Infinity;
+      paras.forEach((p) => { const rc = p.getBoundingClientRect(); const d = rc.top > y ? rc.top - y : rc.bottom < y ? y - rc.bottom : 0; if (d < bestD) { bestD = d; best = p; } });
+      paras.forEach((p) => p.classList.toggle('now', p === best));
+    };
+    const tick = (ts) => {
+      if (!playing) return;
+      if (last) { acc += (ts - last) / 1000 * 46 * speed; const step = Math.floor(acc); if (step) { PS.scrollTop += step; acc -= step; } }
+      last = ts;
+      if (PS.scrollTop + PS.clientHeight >= PS.scrollHeight - 2) setPlay(false); else requestAnimationFrame(tick);
+    };
+    const playBtn = P.querySelector('[data-p="play"]');
+    const setPlay = (v) => { playing = v; last = 0; playBtn.textContent = v ? '暂停' : '开始'; if (v) requestAnimationFrame(tick); };
+    const openPrompter = () => { P.hidden = false; document.body.style.overflow = 'hidden'; PS.scrollTop = 0; mark(); };
+    const closePrompter = () => { setPlay(false); P.hidden = true; document.body.style.overflow = ''; };
+    PS.addEventListener('scroll', mark, { passive: true });
+    PS.addEventListener('click', () => setPlay(!playing));
+    P.querySelector('.prompter-bar').addEventListener('click', (e) => {
+      const a = e.target.closest('[data-p]')?.dataset.p;
+      if (a === 'play') setPlay(!playing);
+      if (a === 'slower' || a === 'faster') { speed = Math.max(0.4, Math.min(2.6, +(speed + (a === 'faster' ? 0.2 : -0.2)).toFixed(1))); document.getElementById('prompter-speed').textContent = speed.toFixed(1) + '×'; }
+      if (a === 'mirror') { P.classList.toggle('mirror'); e.target.classList.toggle('on'); }
+      if (a === 'close') closePrompter();
+    });
+
+    /* ---------- poster (field sheet PNG) ---------- */
+    const M = document.getElementById('poster-modal');
+    const img = document.getElementById('poster-img');
+    const status = document.getElementById('poster-status');
+    const saveBtn = document.getElementById('poster-save');
+    let posterUrl = '';
+    const closePoster = () => { M.hidden = true; document.body.style.overflow = ''; };
+    document.getElementById('poster-close').addEventListener('click', closePoster);
+    M.addEventListener('click', (e) => { if (e.target === M) closePoster(); });
+    saveBtn.addEventListener('click', () => { const a = document.createElement('a'); a.href = posterUrl; a.download = (D.title || '视频脚本') + '-拍摄单.png'; a.click(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (!P.hidden) closePrompter(); if (!M.hidden) closePoster(); } if (e.key === ' ' && !P.hidden) { e.preventDefault(); setPlay(!playing); } });
+
+    const openPoster = async () => {
+      M.hidden = false; document.body.style.overflow = 'hidden';
+      img.hidden = true; saveBtn.disabled = true; status.textContent = '正在生成…';
+      try { posterUrl = await drawPoster(); img.src = posterUrl; img.hidden = false; saveBtn.disabled = false; status.textContent = '手机上长按图片也能保存'; }
+      catch (err) { status.textContent = '生成失败：' + err.message; }
+    };
+
+    const drawPoster = async () => {
+      const W = 1080, PAD = 64, CW = W - PAD * 2;
+      const FONT = '-apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif';
+      const C = { bg: '#fdfcfa', ink: '#191919', ink2: '#5d564b', ink3: '#8d867b', line: 'rgba(25,25,25,0.08)', card: '#ffffff', accent: '#a2784b', hot: '#cf6f47', ok: '#3b8a57', a: '#a2784b', b: '#4d7ca6', screen: '#7a68b0' };
+      const cv = document.getElementById('poster');
+      const ctx = cv.getContext('2d');
+      const wrap = (text, font, width) => {
+        ctx.font = font; const out = []; let cur = '';
+        for (const ch of String(text || '')) { if (ctx.measureText(cur + ch).width > width && cur) { out.push(cur); cur = ch; } else cur += ch; }
+        if (cur) out.push(cur); return out;
+      };
+      const ops = []; let y = PAD;
+      const text = (s, x, yy, font, color, align) => ops.push(() => { ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align || 'left'; ctx.textBaseline = 'top'; ctx.fillText(s, x, yy); });
+      const para = (s, x, font, color, width, lh) => { wrap(s, font, width).forEach((l) => { text(l, x, y, font, color); y += lh; }); };
+      const rect = (x, yy, w, h, r, fill, stroke) => ops.push(() => { ctx.beginPath(); ctx.roundRect(x, yy, w, h, r); if (fill) { ctx.fillStyle = fill; ctx.fill(); } if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.stroke(); } });
+      let logo = null;
+      if (BEAV_ICON.startsWith('data:')) { logo = new Image(); logo.src = BEAV_ICON; try { await logo.decode(); } catch (_) { logo = null; } }
+
+      if (logo) ops.push(() => ctx.drawImage(logo, PAD, PAD, 40, 40));
+      text('拍摄单 · ' + (D.platform || ''), PAD + (logo ? 54 : 0), PAD + 8, `600 24px ${FONT}`, C.ink3);
+      y += 64;
+      para(D.title || '', PAD, `700 48px ${FONT}`, C.ink, CW, 64);
+      y += 6;
+      const done = shots.filter((s) => state.done['shot:' + s.id]).length;
+      text(`时长 ${fmt(runtime)}  ·  ${shots.length} 个镜头  ·  已拍 ${done}/${shots.length}  ·  HKRR ${total}/20`, PAD, y, `600 24px ${FONT}`, C.ink2); y += 52;
+
+      // opening 3 seconds
+      const hookLines = wrap(hookRows.map((r) => r.line).join(''), `600 30px ${FONT}`, CW - 60);
+      const hookH = 70 + hookLines.length * 44;
+      rect(PAD, y, CW, hookH, 28, '#1f1d1b');
+      text('开头 3 秒', PAD + 30, y + 24, `700 22px ${FONT}`, '#e6b980');
+      hookLines.forEach((l, i) => text(l, PAD + 30, y + 60 + i * 44, `600 30px ${FONT}`, '#f4efe8'));
+      y += hookH + 36;
+
+      // clock compact: two columns
+      text('节奏 · 12 点刺激时钟', PAD, y, `700 26px ${FONT}`, C.ink); y += 46;
+      const colW = (CW - 24) / 2;
+      const half = Math.ceil(clock.length / 2);
+      const clockTop = y; let maxY = y;
+      clock.forEach((p, i) => {
+        const col = i < half ? 0 : 1; const row = i < half ? i : i - half;
+        const x = PAD + col * (colW + 24), yy = clockTop + row * 46;
+        const big = BIG.has(String(p.mark));
+        rect(x, yy + 2, 34, 34, 17, big ? C.hot : '#efebe5');
+        text(String(p.mark), x + 17, yy + 9, `700 18px ${FONT}`, big ? '#fff' : C.ink2, 'center');
+        text(String(p.time || ''), x + 46, yy + 8, `600 20px ${FONT}`, C.ink3);
+        const lab = wrap(p.label, `500 22px ${FONT}`, colW - 112)[0] || '';
+        text(lab, x + 108, yy + 7, `500 22px ${FONT}`, C.ink);
+        maxY = Math.max(maxY, yy + 46);
+      });
+      y = maxY + 30;
+
+      // shots
+      text('镜头清单', PAD, y, `700 26px ${FONT}`, C.ink); y += 46;
+      shots.forEach((s) => {
+        const isDone = !!state.done['shot:' + s.id];
+        const what = wrap(s.what, `650 26px ${FONT}`, CW - 190);
+        const how = wrap([s.start, s.action, s.end].filter(Boolean).join(' → '), `400 21px ${FONT}`, CW - 110);
+        const meta = wrap([s.framing, s.takes, s.file].filter(Boolean).join(' · '), `400 19px ${FONT}`, CW - 110);
+        const h = 36 + what.length * 36 + how.length * 30 + meta.length * 27 + 8;
+        rect(PAD, y, CW, h, 22, C.card, C.line);
+        rect(PAD + 26, y + 24, 30, 30, 15, isDone ? C.ok : null, isDone ? null : '#c9c2b8');
+        if (isDone) text('✓', PAD + 41, y + 27, `700 20px ${FONT}`, '#fff', 'center');
+        const col = s.type === 'A' ? C.a : s.type === 'screen' ? C.screen : C.b;
+        text(s.id, PAD + 76, y + 24, `700 22px ui-monospace, Menlo, monospace`, col);
+        let yy = y + 20;
+        what.forEach((l) => { text(l, PAD + 150, yy, `650 26px ${FONT}`, C.ink); yy += 36; });
+        if (s.priority === 'must') text('必拍', PAD + CW - 26, y + 24, `700 20px ${FONT}`, C.hot, 'right');
+        how.forEach((l) => { text(l, PAD + 76, yy + 2, `400 21px ${FONT}`, C.ink2); yy += 30; });
+        meta.forEach((l) => { text(l, PAD + 76, yy + 4, `400 19px ${FONT}`, C.ink3); yy += 27; });
+        y += h + 14;
+      });
+      y += 20;
+      text('Beav · 高留存视频脚本', W / 2, y, `600 20px ${FONT}`, C.ink3, 'center'); y += 30 + PAD - 20;
+
+      cv.width = W; cv.height = Math.ceil(y);
+      ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, cv.height);
+      ops.forEach((f) => f());
+      return cv.toDataURL('image/png');
+    };
+  })();
   </script>
 </body>
 </html>
